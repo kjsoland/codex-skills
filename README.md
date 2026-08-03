@@ -8,6 +8,8 @@ Reusable skills and workflow bundles for Codex.
   and cable assembly drawing packages.
 - [`sol-cable-routing`](skills/sol-cable-routing/): maintain the Sol cable-routing
   workbook, route-length audit, and training material.
+- [`sol-integration-plan`](skills/sol-integration-plan/): maintain, audit, and
+  regenerate the Sol Integration Plan from its authoritative project sources.
 - [`sol-change-management`](skills/sol-change-management/): prepare Sol controlled-
   document change packages and Smartsheet ECR artifacts.
 - [`verify-beam-delivery-tests`](skills/verify-beam-delivery-tests/): map Sol Beam
@@ -32,6 +34,13 @@ skills/
 
 Every skill must include a complete `SKILL.md` with YAML front matter containing
 at least its `name` and `description`.
+
+## Publishing policy
+
+New custom skills and material updates to existing skills are published to this
+repository as part of completing the skill-development work. Repository copies
+should stay synchronized with the working bundles after validation and credential
+scanning.
 
 ## Publication checklist
 

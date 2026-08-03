@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sol Integration Plan"
+  short_description: "Maintain and regenerate the Sol integration plan"
+  default_prompt: "Use $sol-integration-plan to audit and update the Sol Integration Plan from its authoritative project sources."
