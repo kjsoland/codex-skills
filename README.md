@@ -2,12 +2,19 @@
 
 Reusable skills and workflow bundles for Codex.
 
-## Repository status
+## Included skills
 
-This public repository is initialized and ready for skill releases. Existing local
-skills are being reviewed before publication so company-specific procedures,
-internal links, personal information, credentials, and proprietary templates are
-not exposed.
+- [`harness-drawing`](skills/harness-drawing/): create professional cable harness
+  and cable assembly drawing packages.
+- [`sol-cable-routing`](skills/sol-cable-routing/): maintain the Sol cable-routing
+  workbook, route-length audit, and training material.
+- [`sol-change-management`](skills/sol-change-management/): prepare Sol controlled-
+  document change packages and Smartsheet ECR artifacts.
+- [`verify-beam-delivery-tests`](skills/verify-beam-delivery-tests/): map Sol Beam
+  Delivery test results into verification records and waiver drafts.
+
+The Sol bundles intentionally retain their project terminology, workflow rules,
+and supporting assets so the published versions match the working skills.
 
 ## Layout
 
@@ -28,10 +35,11 @@ at least its `name` and `description`.
 
 ## Publication checklist
 
-Before publishing a skill:
+Before publishing another skill:
 
-- Remove secrets, credentials, tokens, private URLs, and personal information.
-- Replace company-specific names, templates, and procedures with reusable examples.
+- Remove secrets, credentials, and tokens.
+- Confirm that any project-specific references and personal information are
+  authorized for public distribution.
 - Confirm that included code, documents, and assets may be distributed publicly.
 - Add setup requirements and a small usage example.
 - Test the skill from a clean installation.

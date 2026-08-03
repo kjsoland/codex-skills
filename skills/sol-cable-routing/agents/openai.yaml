@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sol Cable Routing"
+  short_description: "Maintain Sol routing workbook and training deck"
+  default_prompt: "Use $sol-cable-routing to update the Sol cable routing workbook, training deck, and audit outputs."

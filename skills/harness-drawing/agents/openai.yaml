@@ -1,0 +1,4 @@
+interface:
+  display_name: "Harness Drawing"
+  short_description: "Cable assembly drawings in Quantinuum style"
+  default_prompt: "Use $harness-drawing to create a two-sheet cable assembly drawing with assembly, wiring, BOM, and flag-note details."

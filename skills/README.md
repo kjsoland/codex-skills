@@ -1,7 +1,12 @@
 # Published skills
 
-Publicly cleared skill bundles will be added here, one directory per skill.
+| Skill | Purpose |
+| --- | --- |
+| [`harness-drawing`](harness-drawing/) | Cable harness and cable assembly drawing packages |
+| [`sol-cable-routing`](sol-cable-routing/) | Sol route workbook, route-length audit, and training material |
+| [`sol-change-management`](sol-change-management/) | Sol controlled-document changes and ECR artifacts |
+| [`verify-beam-delivery-tests`](verify-beam-delivery-tests/) | Sol Beam Delivery verification records and waiver drafts |
 
-Do not copy an internal skill into this directory until its instructions, scripts,
-references, and binary assets have all passed the publication checklist in the
-repository README.
+Each directory is a complete skill bundle rooted at `SKILL.md`. Optional
+`agents/`, `assets/`, `references/`, and `scripts/` directories travel with the
+skill when present.
