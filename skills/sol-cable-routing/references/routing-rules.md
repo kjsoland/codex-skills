@@ -33,8 +33,7 @@
 ## Cable identification labels
 
 - Apply an identical cable-identification label at both cable ends.
-- Use `CABLE ID: [DESIGNATOR]`, where the designator is assigned by the governing ICD or cable schedule.
-- Include `ICD: [ACRONYM]` using the current Integration Plan To/From ICD acronym list.
+- Put `CABLE ID: [DESIGNATOR]` and `ICD: [ACRONYM]` on the same label line. The designator is assigned by the governing ICD or cable schedule, and the acronym comes from the current Integration Plan To/From ICD acronym list.
 - Include the full From and To rack/device/port definitions; do not reverse the From/To definition on the destination-end label.
 
 ## Tape-marker interpretation
