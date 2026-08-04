@@ -57,4 +57,4 @@
 - The worksheet `Total` is authoritative.
 - Do not apply post-processing subtractions or additions for waterfalls, rack-frame rows, QPA laterals, or endpoint allowances once those rows are present in the route block.
 - Ground cables follow their route-file rows; do not apply off-sheet waterfall post-processing. Generic CE/CR and L2 ground rows still use the Tripp Lite naming/value rule when those rack families are present.
-- For the rack mobility screen, identify each rack's minimum route margin as `Actual - Total`. Compare that limiting margin with the 24 in target one rack at a time; do not imply that mobility can be restored simultaneously at both ends of the same cable.
+- For the rack mobility screen, exclude ground straps, then identify each rack's minimum remaining route margin as `Actual - Total`. Compare that limiting margin with the 24 in target one rack at a time; do not imply that mobility can be restored simultaneously at both ends of the same cable. Ground straps remain included in the overall route-length audit and ICD traceback.
