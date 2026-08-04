@@ -4,7 +4,7 @@
 
 Primary route workbook:
 
-`C:\Users\Kyle.Solander\Quantinuum LLC\Sol Hardware Project Team - Sol Project Team Channel\Systems\ICDs\Sol Floor Plan ICD\CE Cable Length Estimates_v4p1.xlsx`
+`C:\Users\Kyle.Solander\Quantinuum LLC\Sol Hardware Project Team - Sol Project Team Channel\Systems\ICDs\Sol Floor Plan ICD\Interconnect Routing\CE Cable Length Estimates_v4p1.xlsx`
 
 Local AI work area:
 
@@ -17,6 +17,7 @@ Current training outputs:
 - `Slides\*.png`
 - `Audit\current_length_audit.csv`
 - `Audit\current_icd_traceback.csv`
+- `Audit\current_rack_margin_audit.csv`
 - `Audit\current_audit_summary.txt`
 
 Generation scripts in the work area:

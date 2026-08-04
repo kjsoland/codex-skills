@@ -21,11 +21,21 @@
 
 - Calculate route slack as `Actual - Total`.
 - Do not modify `Actual` unless the user explicitly instructs it.
-- Store all slack inside racks.
-- Rack-to-rack routes: split slack equally between source and destination rack interiors. In route-order graphics, draw the source half as the first segment at the cable beginning and the destination half as the last segment at the cable end.
+- Store slack only inside approved rack interiors.
+- T-racks, Menlo / 1762 Rack, Chiller Racks, and L2 Compute Rack cannot manage or store cable slack.
+- CE-rack routes to a T-rack, Menlo, Chiller Rack, or L2 Compute Rack: store 100% of the slack inside the CE rack and 0% at the other endpoint.
+- Routes between two slack-capable racks (CE racks or the BD/DET Motor Rack): split slack equally between source and destination rack interiors. In route-order graphics, draw the source half as the first segment at the cable beginning and the destination half as the last segment at the cable end.
 - Rack-to-QPA routes: all slack stays in the rack end; no slack in QPA. Draw the slack as the first route-bar segment at the source-rack cable beginning.
 - Rack-to-Gates routes: all slack stays in the source rack; no slack in Gates. Draw the slack as the first route-bar segment at the source-rack cable beginning.
+- If neither cable end is approved for slack storage, stop and obtain a route-specific disposition; do not create an unapproved loop.
 - Negative offset rows are bookkeeping; do not show them as physical tape spans. If the graphic omits a negative offset, fold its effect into the rack-storage/slack bucket so tape marks still match worksheet math.
+
+## Cable identification labels
+
+- Apply an identical cable-identification label at both cable ends.
+- Use `CABLE ID: [DESIGNATOR]`, where the designator is assigned by the governing ICD or cable schedule.
+- Include `ICD: [ACRONYM]` using the current Integration Plan To/From ICD acronym list.
+- Include the full From and To rack/device/port definitions; do not reverse the From/To definition on the destination-end label.
 
 ## Tape-marker interpretation
 
@@ -39,7 +49,7 @@
 - Show every destination-side route step after the highlighted Tape 2 row through the cable end, followed by the total Tape-2-to-To-end measurement; note that this is measured backward from the To end.
 - Summarize the route between Tape 1 and Tape 2 without providing a tape-to-tape distance.
 - Do not place tape at the source waterfall exit or destination waterfall entry. The tape-to-tape span includes the first waterfall crossing, all route rows between waterfalls, and the destination waterfall crossing.
-- Continue to allocate slack inside racks: split rack-to-rack slack equally; keep all rack-to-QPA/Gates slack at the source rack. Slack changes the connector-to-waterfall measurement but does not create an additional tape point.
+- Continue to allocate slack only at approved rack interiors: split between two slack-capable racks, keep CE-to-T/Menlo/Chiller/L2 slack entirely at the CE end, and keep rack-to-QPA/Gates slack at the rack end. Slack changes the connector-to-waterfall measurement but does not create an additional tape point.
 - In graphics, place slack only at the physical cable ends: source slack first and rack-to-rack destination slack last.
 - Negative offset rows are bookkeeping only; fold them into the applicable slack/storage allocation and do not create tape points for them.
 
@@ -48,3 +58,4 @@
 - The worksheet `Total` is authoritative.
 - Do not apply post-processing subtractions or additions for waterfalls, rack-frame rows, QPA laterals, or endpoint allowances once those rows are present in the route block.
 - Ground cables follow their route-file rows; do not apply off-sheet waterfall post-processing. Generic CE/CR and L2 ground rows still use the Tripp Lite naming/value rule when those rack families are present.
+- For the rack mobility screen, identify each rack's minimum route margin as `Actual - Total`. Compare that limiting margin with the 24 in target one rack at a time; do not imply that mobility can be restored simultaneously at both ends of the same cable.
