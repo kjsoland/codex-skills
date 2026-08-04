@@ -60,8 +60,9 @@ Every change summary should include:
 
 - `Compared Source Artifacts` section with the standard table format below.
 - Executive summary.
-- Change item list with WAS, IS, rationale when known, and technical impact for actual changes only. Do not create `CR-#` sections for unchanged tabs, figures, tables, document areas, or verification checks.
+- Change item list with WAS, IS, rationale when known, and technical impact for actual changes only. Title every numbered item exactly `CR# - [DOC NAME], Change title`; replace `[DOC NAME]` with the controlled document name without literal brackets, and do not insert a hyphen between `CR` and its number. Do not create CR sections for unchanged tabs, figures, tables, document areas, or verification checks.
 - On reruns after source updates or corrections, replace stale assessment language with the current release-to-proposed deltas. Do not include process history such as previous inspections, removed temporary content, false starts, or statements that earlier findings are no longer true unless Kyle explicitly requests that audit trail.
+- Treat released revisions as immutable. If a released copy was edited in place, compare the restored released file with the newly created working revision. Omit content already present in the restored release from the change list and from concurrent WAS/IS evidence; do not narrate the mistaken released-copy edits unless Kyle explicitly requests an audit trail.
 - Graphics/figure impact findings when the changed data appears in diagrams, screenshots, embedded images, layout views, or figure captions inside the actual released/current controlled document.
 - Complete material deltas for each changed/impacted controlled document, including concurrent changes found in the same working revision. Attribute each delta to the active CDL, another known CDL, concurrent/unattributed content, or a release check; do not silently omit changes merely because they are outside the active CDL.
 - Review checks or open questions.
@@ -108,7 +109,7 @@ When the change is graphical, layout-based, diagram-heavy, figure-driven, or Kyl
 - Create reviewer-friendly images such as before/after screenshot crops, annotated current-state context views, or extracted DOCX/Visio/PowerPoint figure comparisons.
 - Put a visible box, arrow, highlight, or callout around each changed figure/diagram region. If the same figure contains multiple CDL scopes, use distinct scope-coded colors and label each annotation. Do not rely on prose alone to tell the reviewer where to look.
 - Store generated images under `<package>/assets/`.
-- Embed each image directly in the applicable `CR-#` or change item section of `<slug>_change_summary.md`, adjacent to the WAS/IS/impact text it supports.
+- Embed each image directly in the applicable `CR# - [DOC NAME], Change title` section of `<slug>_change_summary.md`, adjacent to the WAS/IS/impact text it supports.
 - For before/after graphics, label the baseline image as `WAS - old baseline picture` and the current image as `IS - new current picture`. Prefer side-by-side, equal-width WAS/IS pairs, such as a two-column markdown table. If the images become unreadable or do not fit cleanly, stack them vertically, but preserve the explicit WAS/IS labels immediately with each image.
 - When a designed PNG/SVG already contains the detailed WAS/IS rows, use that visual as the sole table-level evidence in the change item. Do not place a Markdown table containing the same rows immediately before or after it. A one- or two-sentence lead-in is sufficient. This non-duplication rule does not replace the required source-artifact or impacted-docs Markdown tables.
 - Regenerate `<slug>_change_summary.pdf` after updating images or image references so the review artifact shows the latest graphics.
@@ -124,7 +125,7 @@ For each changed subject or impacted controlled document included in the package
 
 1. Inventory every worksheet/section and review values, formulas, tables, added/removed logical records, freeze panes, hidden/visible content, validations, charts, embedded figures, and release-relevant layout settings.
 2. Use stable logical identifiers when inserted/deleted rows make a coordinate diff noisy. For formulas that refer to shifted rows, resolve references back to logical records before classifying a material change.
-3. Separate the active-CDL delta from other known-CDL and concurrent/unattributed deltas. Show concurrent changes when a complete revision audit is requested or necessary for release review, but state that they do not expand the active CDL scope without owner confirmation.
+3. Separate the active-CDL delta from other known-CDL and concurrent/unattributed deltas that are actually new in the working revision. Show concurrent working-revision changes when a complete revision audit is requested or necessary for release review, but state that they do not expand the active CDL scope without owner confirmation. Never re-report content already present in the restored released baseline as a concurrent change.
 4. Record no-change worksheet/figure results only in concise audit evidence; do not create change items for them.
 5. Preserve machine-readable comparison evidence under `smartsheet-dry-run/` when practical.
 
