@@ -1,0 +1,107 @@
+{
+  "links": {
+    "https://tinyurl.com/2mamm7x5": {
+      "vendor": "VANDESAIL",
+      "vendor_part_number": "B08PK85DY2",
+      "identifier_type": "Amazon ASIN",
+      "description": "15 m OM3 multimode duplex LC-to-LC fiber patch cable",
+      "canonical_url": "https://vandesail.com/products/fiber-patch-cable-vandesail-10g-gigabit-fiber-optic-cables-with-lc-to-lc-multimode-om3-duplex-50-125-ofnp"
+    },
+    "https://tinyurl.com/3nt5wxmh": {
+      "vendor": "Monoprice",
+      "vendor_part_number": "B0C4NFHL3P",
+      "identifier_type": "Amazon ASIN",
+      "description": "50 ft SlimRun Cat6A UTP black RJ45 Ethernet patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B0C4NFHL3P"
+    },
+    "https://tinyurl.com/56c25fhv": {
+      "vendor": "Monoprice",
+      "vendor_part_number": "B0C4NFHL3P",
+      "identifier_type": "Amazon ASIN",
+      "description": "50 ft SlimRun Cat6A UTP black RJ45 Ethernet patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B0C4NFHL3P"
+    },
+    "https://tinyurl.com/3t7juux3": {
+      "vendor": "Cable Matters",
+      "vendor_part_number": "B0DB4KPF8X",
+      "identifier_type": "Amazon ASIN",
+      "description": "75 ft slim Cat6 black RJ45 Ethernet patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B0DB4KPF8X"
+    },
+    "https://tinyurl.com/fx88dvur": {
+      "vendor": "Cable Matters",
+      "vendor_part_number": "B0DB4KPF8X",
+      "identifier_type": "Amazon ASIN",
+      "description": "75 ft slim Cat6 black RJ45 Ethernet patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B0DB4KPF8X"
+    },
+    "https://tinyurl.com/4un7nbab": {
+      "vendor": "Monoprice",
+      "vendor_part_number": "B07GGDRW7P",
+      "identifier_type": "Amazon ASIN",
+      "description": "20 ft SlimRun Cat6A black RJ45 Ethernet patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B07GGDRW7P"
+    },
+    "https://tinyurl.com/4x55f68s": {
+      "vendor": "Cable Matters",
+      "vendor_part_number": "B0DB4H8XH9",
+      "identifier_type": "Amazon ASIN",
+      "description": "30 ft ultra-thin Cat6 black RJ45 Ethernet patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B0DB4H8XH9"
+    },
+    "https://tinyurl.com/bde4shj2": {
+      "vendor": "Cable Matters",
+      "vendor_part_number": "B01CRFVIBK",
+      "identifier_type": "Amazon ASIN",
+      "description": "50 ft slim Cat6 black RJ45 Ethernet patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B01CRFVIBK"
+    },
+    "https://tinyurl.com/yv9wey5w": {
+      "vendor": "Cable Matters",
+      "vendor_part_number": "B01CRFVIBK",
+      "identifier_type": "Amazon ASIN",
+      "description": "50 ft slim Cat6 black RJ45 Ethernet patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B01CRFVIBK"
+    },
+    "https://tinyurl.com/bdh7tbzv": {
+      "vendor": "10Gtek",
+      "vendor_part_number": "B07JHYVGX1",
+      "identifier_type": "Amazon ASIN",
+      "description": "7 m multimode duplex LC-to-LC fiber patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B07JHYVGX1"
+    },
+    "https://tinyurl.com/bdhv24m7": {
+      "vendor": "10Gtek",
+      "vendor_part_number": "B088LTR423",
+      "identifier_type": "Amazon ASIN",
+      "description": "20 m multimode duplex LC-to-LC fiber patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B088LTR423"
+    },
+    "https://tinyurl.com/mx4rpymp": {
+      "vendor": "Cable Matters",
+      "vendor_part_number": "B01CRFVKZO",
+      "identifier_type": "Amazon ASIN",
+      "description": "35 ft slim Cat6 black RJ45 Ethernet patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B01CRFVKZO"
+    },
+    "https://tinyurl.com/ywp84v9p": {
+      "vendor": "FLYPROFiber",
+      "vendor_part_number": "B089JWTS6K",
+      "identifier_type": "Amazon ASIN",
+      "description": "33 ft multimode duplex LC-to-LC fiber patch cable",
+      "canonical_url": "https://www.amazon.com/dp/B089JWTS6K"
+    }
+  },
+  "part_numbers": {
+    "U328F-15M": {
+      "vendor": "Eaton / Tripp Lite",
+      "description": "15 m plenum-rated USB-A to USB-B active optical cable",
+      "canonical_url": "https://www.eaton.com/"
+    },
+    "788302-30": {
+      "vendor": "NI",
+      "description": "30 m Gen 3 x4 fiber-optic MXI-Express cable",
+      "canonical_url": "https://www.ni.com/en/shop/hardware/cables/model-mxi-express-cable"
+    }
+  }
+}

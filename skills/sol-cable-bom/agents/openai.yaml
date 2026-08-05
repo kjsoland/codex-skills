@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sol Cable BOM"
+  short_description: "Create traceable Sol cable BOM workbooks"
+  default_prompt: "Use $sol-cable-bom to build a cable BOM from the latest working Sol ICD and place it in the product-structure folder."

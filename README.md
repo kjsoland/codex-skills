@@ -8,6 +8,8 @@ Reusable skills and workflow bundles for Codex.
   and cable assembly drawing packages.
 - [`sol-cable-routing`](skills/sol-cable-routing/): maintain the Sol cable-routing
   workbook, route-length audit, and training material.
+- [`sol-cable-bom`](skills/sol-cable-bom/): create traceable cable-kit BOM
+  workbooks from Sol ICDs and the product structure.
 - [`sol-integration-plan`](skills/sol-integration-plan/): maintain, audit, and
   regenerate the Sol Integration Plan from its authoritative project sources.
 - [`sol-change-management`](skills/sol-change-management/): prepare Sol controlled-
