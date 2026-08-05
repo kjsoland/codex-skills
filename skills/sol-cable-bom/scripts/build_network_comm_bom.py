@@ -12,9 +12,7 @@ from pathlib import Path
 from typing import Any, Iterable
 
 from openpyxl import Workbook, load_workbook
-from openpyxl.comments import Comment
-from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
-from openpyxl.worksheet.table import Table, TableStyleInfo
+from openpyxl.styles import Alignment, Font
 
 
 HEADERS = [
@@ -314,7 +312,7 @@ def write_workbook(output: Path, lines: list[dict[str, Any]], source_name: str) 
     ws.title = "Cable BOM"
     wb.properties.title = "Sol Network and Comm Cable Kit BOM"
     wb.properties.subject = f"Cable BOM derived from {source_name}"
-    wb.properties.description = "Arena part numbers intentionally blank; source conflicts and TBDs are retained in Notes."
+    wb.properties.description = "Arena part numbers and drawing-note cells are intentionally blank."
 
     ws.append(HEADERS)
     for index, line in enumerate(lines, start=1):
@@ -325,48 +323,28 @@ def write_workbook(output: Path, lines: list[dict[str, Any]], source_name: str) 
                 line["vendor_part_number"],
                 line["quantity"],
                 line["description"],
-                line["notes"],
+                None,
             ]
         )
-        if line["hyperlink"]:
-            ws.cell(index + 1, 3).hyperlink = line["hyperlink"]
-            ws.cell(index + 1, 3).style = "Hyperlink"
 
-    dark_blue = "1F4E78"
-    header_fill = PatternFill("solid", fgColor=dark_blue)
-    input_fill = PatternFill("solid", fgColor="FFF2CC")
-    tbd_fill = PatternFill("solid", fgColor="FCE4D6")
-    thin_gray = Side(style="thin", color="D9E1F2")
     for cell_obj in ws[1]:
-        cell_obj.fill = header_fill
-        cell_obj.font = Font(color="FFFFFF", bold=True)
+        cell_obj.font = Font(bold=True)
         cell_obj.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
-    ws.row_dimensions[1].height = 30
+    ws.row_dimensions[1].height = 24
 
     for row in range(2, ws.max_row + 1):
-        ws.cell(row, 2).fill = input_fill
-        if ws.cell(row, 3).value == "TBD":
-            ws.cell(row, 3).fill = tbd_fill
-            ws.cell(row, 3).font = Font(color="9C0006", bold=True)
         for column in range(1, 7):
-            ws.cell(row, column).alignment = Alignment(vertical="top", wrap_text=column in (5, 6))
-            ws.cell(row, column).border = Border(bottom=thin_gray)
+            ws.cell(row, column).alignment = Alignment(vertical="top", wrap_text=column == 5)
         ws.cell(row, 1).alignment = Alignment(horizontal="center", vertical="top")
         ws.cell(row, 4).alignment = Alignment(horizontal="center", vertical="top")
-        note_length = len(text(ws.cell(row, 6).value))
-        ws.row_dimensions[row].height = min(105, max(30, 15 * (1 + note_length // 115)))
+        description_length = len(text(ws.cell(row, 5).value))
+        ws.row_dimensions[row].height = min(45, max(20, 15 * (1 + description_length // 60)))
 
     ws.freeze_panes = "A2"
-    ws.sheet_view.showGridLines = False
-    widths = {"A": 11, "B": 22, "C": 23, "D": 11, "E": 58, "F": 110}
+    ws.auto_filter.ref = f"A1:F{ws.max_row}"
+    widths = {"A": 13, "B": 22, "C": 23, "D": 13, "E": 62, "F": 36}
     for column, width in widths.items():
         ws.column_dimensions[column].width = width
-
-    table = Table(displayName="NetworkCommCableBOM", ref=f"A1:F{ws.max_row}")
-    table.tableStyleInfo = TableStyleInfo(name="TableStyleMedium2", showFirstColumn=False, showLastColumn=False, showRowStripes=True, showColumnStripes=False)
-    ws.add_table(table)
-    ws["B1"].comment = Comment("Intentionally blank for later Arena PLM part-number assignment.", "Jarvis")
-    ws["C1"].comment = Comment("Amazon ASINs are retained where the ICD provides only an Amazon purchasing link; confirm manufacturer part numbers before Arena release.", "Jarvis")
 
     ws.sheet_properties.pageSetUpPr.fitToPage = True
     ws.page_setup.orientation = "landscape"
@@ -374,7 +352,6 @@ def write_workbook(output: Path, lines: list[dict[str, Any]], source_name: str) 
     ws.page_setup.fitToHeight = 0
     ws.print_title_rows = "1:1"
     ws.print_area = f"A1:F{ws.max_row}"
-    ws.oddFooter.center.text = f"Derived from {source_name}"
 
     output.parent.mkdir(parents=True, exist_ok=True)
     wb.save(output)
@@ -394,14 +371,26 @@ def validate_output(output: Path, expected_quantity: int, expected_lines: int) -
         raise AssertionError(f"Expected {expected_lines} BOM lines, found {actual_lines}")
     if actual_quantity != expected_quantity:
         raise AssertionError(f"Expected quantity {expected_quantity}, found {actual_quantity}")
-    if ws.freeze_panes != "A2" or not ws.tables:
+    if ws.freeze_panes != "A2" or ws.auto_filter.ref != f"A1:F{ws.max_row}" or ws.tables:
         raise AssertionError("Workbook formatting validation failed")
+    if not all(cell.font.bold for cell in ws[1]):
+        raise AssertionError("Header row must be bold")
+    if any(ws.cell(row, 6).value not in (None, "") for row in range(2, ws.max_row + 1)):
+        raise AssertionError("Notes column must be blank")
+    if any(cell.hyperlink is not None for row in ws.iter_rows() for cell in row):
+        raise AssertionError("Workbook must not contain hyperlinks")
+    if any(cell.comment is not None for row in ws.iter_rows() for cell in row):
+        raise AssertionError("Workbook must not contain cell comments")
+    if any(cell.fill.fill_type is not None for row in ws.iter_rows() for cell in row):
+        raise AssertionError("Workbook must not contain color fills")
     return {
         "output": str(output),
         "bom_lines": actual_lines,
         "total_quantity": actual_quantity,
         "tbd_vendor_part_lines": sum(ws.cell(row, 3).value == "TBD" for row in range(2, ws.max_row + 1)),
         "blank_arena_part_numbers": sum(ws.cell(row, 2).value in (None, "") for row in range(2, ws.max_row + 1)),
+        "blank_notes": sum(ws.cell(row, 6).value in (None, "") for row in range(2, ws.max_row + 1)),
+        "hyperlinks": sum(cell.hyperlink is not None for row in ws.iter_rows() for cell in row),
     }
 
 

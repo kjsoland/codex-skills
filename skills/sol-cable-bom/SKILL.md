@@ -15,9 +15,9 @@ Create a traceable purchasing BOM from a Sol cable-related ICD without silently 
 4. Read the relevant ICD cable sheets and count one cable instance per populated design row.
 5. Aggregate only records that resolve to the same orderable identifier and compatible cable type/length.
 6. Keep the Arena part-number cells blank. Use `TBD` for an unresolved vendor part number so missing purchasing data is visible.
-7. Preserve source traceability in Notes with the ICD filename, worksheet, row numbers, vendor labels, and order links.
-8. If an order link conflicts with the source cable type or other purchasing fields, create a separate `TBD` line and describe the conflict. Never infer a replacement part.
-9. Validate headers, quantities, source coverage, hyperlinks, table filters, and freeze panes before delivery.
+7. Leave every Notes cell blank. The Notes column is reserved for drawing notes that link back to BOM items.
+8. If an order link conflicts with the source cable type or other purchasing fields, create a separate `TBD` line and identify the needed correction in Description. Never infer a replacement part.
+9. Validate headers, quantities, source coverage, blank Notes cells, filter range, and freeze panes before delivery.
 
 ## Network and Comm ICD
 
@@ -42,7 +42,7 @@ Create one worksheet named `Cable BOM` with these columns in this order:
 5. Description
 6. Notes
 
-Use an Excel table, freeze the header row, enable filtering, wrap long text, hyperlink known vendor part numbers to their source page, and highlight blank Arena cells as intended inputs. Keep the workbook purchasing-focused; do not add unrelated ICD data sheets.
+Use plain cells with no color formatting. Bold only the header row, freeze it, enable filtering, and wrap long descriptions. Leave the Notes column completely blank and do not add hyperlinks, comments, banding, colored fills, or colored fonts. Keep the workbook purchasing-focused; do not add unrelated ICD data sheets.
 
 ## Setup and Example
 
