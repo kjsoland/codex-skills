@@ -28,12 +28,19 @@ Use these conventions for cable assembly drawings unless the user explicitly ove
 \renewcommand{\qtrevname}{AB}
 ```
 
+## Typography
+
+- Match a supplied Quantinuum reference drawing with an Arial/Helvetica-style sans-serif family throughout; do not mix serif body text into the drawing.
+- Use regular weight for body notes and dimensions, and bold weight for note categories, drawing titles, table headers, and `REFERENCE:` callouts.
+- Embed the selected regular and bold fonts in the PDF. When Arial is available locally, prefer it; otherwise use a metrically similar Helvetica-compatible sans face.
+- On 11x17 output, target approximately 6.5-7 pt for dense notes and drawing BOM text. Do not reduce critical drawing text below 6 pt to force a layout to fit; reposition or reflow the layout instead.
+
 ## Sheet 1 Assembly View
 
 - Draw the cable as a smooth harness diagram, not a block diagram.
 - Use black harness lines with small connector blocks.
 - Keep the assembly graphic centered horizontally in the drawing field and vertically balanced between the notes and the BOM.
-- Move the graphic down when notes grow. Do not let notes collide with dimensions or harness geometry.
+- Move the graphic down when notes grow while preserving horizontal centering. Do not let notes collide with dimensions or harness geometry.
 - Keep connector part numbers out of the graphic; show reference designators in the graphic and detailed part numbers in the BOM.
 - Add connector or component pictures near their components only when they help assembly or identification and do not crowd the drawing.
 
@@ -91,6 +98,7 @@ To: QPA, JUNCTION_BOX, SPAD_Power
 - For a Quantinuum mechanical-style `SH1`, use exactly these drawing-BOM columns: `ITEM`, `PART NUMBER`, `QTY`, `DESCRIPTION`.
 - Order item rows from highest item number at the top to lowest at the bottom, with the column-header row at the bottom of the table.
 - Align the drawing BOM immediately above the title block and keep it within the same right-side footprint as the reference drawing.
+- Position the drawing BOM independently of normal document flow and leave a visible gap of about 0.08-0.12 in above the title-block border; do not let the BOM rule coincide with or enter the template box.
 - Use assembly-consumption quantities in the drawing BOM. Use `A/R` only where the cut quantity is intentionally controlled by assembly fit or another note.
 - Do not put manufacturer, distributor, distributor part number, pricing, stock, URLs, analysis results, or source citations in the released drawing BOM. Keep those fields in the purchasing workbook.
 - When a real ordered list is provided:
@@ -130,6 +138,9 @@ To: QPA, JUNCTION_BOX, SPAD_Power
 - Assembly graphic does not overlap notes, BOM, title block, or border zones.
 - Sheet 2 wiring lines are readable and not kinked unnecessarily.
 - BOM rows fit and remain legible.
+- Regular and bold sans-serif fonts are embedded, with no unintended serif text.
+- BOM and notes remain at least 6 pt on 11x17 output.
+- A visible clearance remains between the BOM and title block.
 - Drawing BOM uses `ITEM | PART NUMBER | QTY | DESCRIPTION`, descending item rows, and a bottom header when the Quantinuum mechanical convention applies.
 - Excel BOM hyperlinks are clickable.
 - Voltage-drop workbook timestamp is unchanged for drawing-only changes.
