@@ -16,6 +16,7 @@ Before creating or editing a harness drawing, read `references/drawing-standard.
 1. Identify whether the request is drawing-only or changes electrical design inputs.
    - If only notes, labels, dimensions, layout, or BOM exports change, do not regenerate voltage-drop analysis workbooks.
    - Regenerate voltage/electrical analysis only when length, AWG, pair count, current/load, resistance, connector selection, or workbook content changes.
+   - Use voltage-drop analyses as design inputs for length, AWG, and pair count. Do not place calculated voltage-drop results on cable drawings unless the user explicitly requests them.
 2. Use the bundled Quantinuum drawing template for new drawing packages.
    - For new drawings, load or copy `assets/quantinuum_schematic_assembly_template.tex` so sheets use the Quantinuum border, zone grid, revision block, lower notes, and title block.
    - When updating an existing project, prefer patching the existing script over hand-editing generated `.tex` or `.pdf` outputs.
@@ -23,8 +24,10 @@ Before creating or editing a harness drawing, read `references/drawing-standard.
 3. Keep cable assembly PDFs in the established two-sheet format.
    - Sheet 1: assembly/harness view with mechanical dimensions, vertical notes, flag-note markers, and PDF BOM.
    - Sheet 2: wiring diagram with straight schematic conductors, connector pin numbers, splices, and twisted-pair symbols.
-4. For BOM exports, keep the PDF BOM format unchanged unless requested.
-   - When the user asks for easier ordering, generate individual cable BOM Excel files with website/order links, stock, lead time, unit cost, and known subtotal.
+4. Treat the released-drawing BOM and purchasing BOM as different views.
+   - For a Quantinuum mechanical-style drawing, use the formal four-column drawing BOM described in `references/drawing-standard.md`.
+   - When a real order list is supplied, allocate lines to each cable by connector gender, contact gender/termination, wire gauge/color, interface hardware, and quantity. Put only the selected, consumed parts on the drawing; identify spares and evaluation alternatives separately instead of adding ambiguous `OR` parts.
+   - When the user asks for easier ordering or allocation traceability, generate individual cable BOM Excel files with website/order links, ordered quantity, assembly quantity, stock, lead time, unit cost, and known subtotal.
 5. Validate visually.
    - Compile PDFs.
    - Render page previews with PyMuPDF/fitz or equivalent.

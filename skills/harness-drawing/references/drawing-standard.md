@@ -50,7 +50,17 @@ Use these conventions for cable assembly drawings unless the user explicitly ove
 
 - Put drawing notes in the upper-left corner.
 - Notes must be one vertical, left-aligned stack. Do not expand notes horizontally into side-by-side columns.
-- Continue note numbering for flag notes.
+- When matching a Quantinuum mechanical reference drawing, use the same formal category sequence and 100-series numbering:
+  - `DRAWING STANDARDS`: 101-series
+  - `MATERIAL`: 201-series
+  - `CASTINGS/FORGING/INJECTION MOLDING REQUIREMENTS`: 301-series
+  - `DIMENSIONAL CONTROLS`: 401-series
+  - `PROCESS REQUIREMENTS`: 501-series
+  - `INSPECTION/TESTING REQUIREMENTS`: 601-series
+  - `MISCELLANEOUS`: 701-series
+  - `ASSEMBLY REQUIREMENTS`: 801-series
+  - `ITEM IDENTIFICATION`: 901-series
+- Use uppercase category headings and preserve the reference drawing's line wrapping and numbered-note cadence as closely as the available drawing field permits.
 - For flag notes, put the full note text only in the notes stack.
 - On the graphic, place only a small square-boxed note number at the approximate location.
 - Do not use leader arrows for flag notes unless the user specifically requests arrows.
@@ -78,9 +88,18 @@ To: QPA, JUNCTION_BOX, SPAD_Power
 
 ## BOM Rules
 
-- The PDF BOM on `SH1` should use reference designators to call out parts.
-- Include manufacturer, part number/material, quantity, distributor/PN, unit cost, extended cost, and notes when known.
-- Keep PDF BOMs compact and assembly-focused.
+- For a Quantinuum mechanical-style `SH1`, use exactly these drawing-BOM columns: `ITEM`, `PART NUMBER`, `QTY`, `DESCRIPTION`.
+- Order item rows from highest item number at the top to lowest at the bottom, with the column-header row at the bottom of the table.
+- Align the drawing BOM immediately above the title block and keep it within the same right-side footprint as the reference drawing.
+- Use assembly-consumption quantities in the drawing BOM. Use `A/R` only where the cut quantity is intentionally controlled by assembly fit or another note.
+- Do not put manufacturer, distributor, distributor part number, pricing, stock, URLs, analysis results, or source citations in the released drawing BOM. Keep those fields in the purchasing workbook.
+- When a real ordered list is provided:
+  - Match plug/receptacle and pin/socket gender before allocation.
+  - Verify contact wire-gauge range and termination method against the drawing conductor.
+  - Prefer the connector manufacturer's compatible contact family when the order contains cross-manufacturer evaluation alternatives, unless compatibility is documented or the user directs otherwise.
+  - Separate the quantity consumed by one assembly from the total quantity ordered.
+  - Keep purchased spares, unselected alternates, and evaluation hardware off the released assembly BOM; account for them in an allocation summary or purchasing workbook.
+  - Do not guess unresolved compatibility. Leave it flagged for review.
 - When asked for individual Excel BOMs, create one workbook per cable with:
   - Reference designator
   - Manufacturer
@@ -96,6 +115,12 @@ To: QPA, JUNCTION_BOX, SPAD_Power
   - Notes
 - Add formulas for known subtotal and leave TBD items as TBD.
 
+## Revision And Cross-Sheet Discipline
+
+- Increment the cable drawing revision when selected material or assembly hardware changes; do not silently replace a released BOM under the same revision.
+- Keep electrical design-source revisions identifiable in the revision description without copying analysis results into the drawing.
+- On `SH2`, reference the applicable numbered `SH1` notes and BOM items instead of repeating informal construction paragraphs.
+
 ## Validation Checklist
 
 - PDF compiles without LaTeX errors.
@@ -105,5 +130,7 @@ To: QPA, JUNCTION_BOX, SPAD_Power
 - Assembly graphic does not overlap notes, BOM, title block, or border zones.
 - Sheet 2 wiring lines are readable and not kinked unnecessarily.
 - BOM rows fit and remain legible.
+- Drawing BOM uses `ITEM | PART NUMBER | QTY | DESCRIPTION`, descending item rows, and a bottom header when the Quantinuum mechanical convention applies.
 - Excel BOM hyperlinks are clickable.
 - Voltage-drop workbook timestamp is unchanged for drawing-only changes.
+- Cable drawings do not expose voltage-drop calculations unless explicitly requested.
