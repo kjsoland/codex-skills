@@ -20,6 +20,8 @@ Use these conventions for cable assembly drawings unless the user explicitly ove
 - Load the template after LaTeX packages such as `tikz`, `xcolor`, and `helvet`.
 - Start each sheet with `\quantinuumsheet{title}{drawing_no}{rev}{size}{sheet}{project}{engineer}{part_number}{drawing_type}`.
 - Put drawing content inside `\begin{quantinuumcontent}` and `\end{quantinuumcontent}`.
+- Use the exact released assembly name as the title-block title on every sheet. Do not replace it with a sheet-specific label such as `Cable 1 Assembly Drawing` or `Cable 1 Wiring Diagram`; keep the drawing type in its separate title-block field when the template provides one.
+- Do not repeat the assembly name in a page corner or above the drawing field. Retain only the template's drawing-number, revision, and sheet identifier outside the title block when that identifier is part of the established format.
 - Set optional revision row values before calling `\quantinuumsheet` when needed:
 
 ```tex
