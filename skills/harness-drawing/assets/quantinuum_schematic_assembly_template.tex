@@ -1,0 +1,116 @@
+% Quantinuum schematic / assembly drawing sheet template.
+% Derived from local reference: PBA13320291-101_Assembly.PDF.
+% This workspace version is sized for 11 x 17 in landscape drawings.
+% Requires: tikz with calc, xcolor, helvet or another sans-serif font.
+
+\definecolor{qtblue}{HTML}{003399}
+\definecolor{qtpurple}{HTML}{663399}
+\definecolor{qtgrid}{HTML}{666666}
+\definecolor{qtlight}{HTML}{F7F7F7}
+
+% Optional revision-row overrides. Define these before \quantinuumsheet.
+\providecommand{\qtrevdescription}{Initial cable drawing}
+\providecommand{\qtrevdate}{\today}
+\providecommand{\qtrevname}{}
+
+\newcommand{\quantinuumsheet}[9]{%
+  \begin{tikzpicture}[remember picture,overlay,x=1in,y=1in]
+    \begin{scope}[shift={(current page.south west)}]
+      % ANSI B landscape sheet frame: 17 x 11 in page, inner drawing border.
+      \draw[qtgrid,line width=0.55pt] (0.18,0.18) rectangle (16.82,10.82);
+      \draw[qtgrid,line width=0.30pt] (0.32,0.32) rectangle (16.68,10.68);
+
+      % Zone grid labels: A-D across, 1-3 vertically.
+      \foreach \i/\lab in {0/A,1/B,2/C,3/D} {
+        \pgfmathsetmacro{\xmid}{0.18 + 4.16*\i + 2.08}
+        \pgfmathsetmacro{\xline}{0.18 + 4.16*\i}
+        \draw[qtgrid,line width=0.22pt] (\xline,10.68) -- (\xline,10.82);
+        \draw[qtgrid,line width=0.22pt] (\xline,0.18) -- (\xline,0.32);
+        \node[font=\scriptsize] at (\xmid,10.75) {\lab};
+        \node[font=\scriptsize] at (\xmid,0.25) {\lab};
+      }
+      \draw[qtgrid,line width=0.22pt] (16.82,10.68) -- (16.82,10.82);
+      \draw[qtgrid,line width=0.22pt] (16.82,0.18) -- (16.82,0.32);
+
+      \foreach \i/\lab in {0/1,1/2,2/3} {
+        \pgfmathsetmacro{\ymid}{0.18 + 3.546*\i + 1.773}
+        \pgfmathsetmacro{\yline}{0.18 + 3.546*\i}
+        \draw[qtgrid,line width=0.22pt] (0.18,\yline) -- (0.32,\yline);
+        \draw[qtgrid,line width=0.22pt] (16.68,\yline) -- (16.82,\yline);
+        \node[font=\scriptsize] at (0.25,\ymid) {\lab};
+        \node[font=\scriptsize] at (16.75,\ymid) {\lab};
+      }
+      \draw[qtgrid,line width=0.22pt] (0.18,10.82) -- (0.32,10.82);
+      \draw[qtgrid,line width=0.22pt] (16.68,10.82) -- (16.82,10.82);
+
+      % Revision history block.
+      \draw[qtgrid,line width=0.35pt] (13.15,10.08) rectangle (16.62,10.55);
+      \fill[qtlight] (13.15,10.34) rectangle (16.62,10.55);
+      \draw[qtgrid,line width=0.22pt] (13.45,10.08) -- (13.45,10.55);
+      \draw[qtgrid,line width=0.22pt] (15.70,10.08) -- (15.70,10.55);
+      \draw[qtgrid,line width=0.22pt] (16.18,10.08) -- (16.18,10.55);
+      \draw[qtgrid,line width=0.22pt] (13.15,10.34) -- (16.62,10.34);
+      \node[font=\tiny\bfseries] at (13.30,10.44) {Rev};
+      \node[font=\tiny\bfseries] at (14.58,10.44) {Description};
+      \node[font=\tiny\bfseries] at (15.94,10.44) {Date};
+      \node[font=\tiny\bfseries] at (16.40,10.44) {Name};
+      \node[font=\tiny] at (13.30,10.20) {#3};
+      \node[font=\tiny,align=center,text width=2.05in] at (14.58,10.20) {\qtrevdescription};
+      \node[font=\tiny] at (15.94,10.20) {\qtrevdate};
+      \node[font=\tiny,align=center,text width=0.38in] at (16.40,10.20) {\qtrevname};
+
+      % General notes / standards block, sized to avoid title block overlap.
+      \node[anchor=south west,align=left,text width=7.75in,font=\tiny] at (0.48,0.46) {%
+        \textbf{UNLESS OTHERWISE SPECIFIED:}\\
+        DIMENSIONS ARE IN: INCHES\\
+        INTERPRET DRAWING PER MIL-T-31000\\
+        INTERPRET DIMENSIONS AND TOLERANCES PER ASME Y14.5\\
+        WORKMANSHIP PER MIL-HDBK-454, GUIDELINE 9\\
+        DO NOT SCALE DRAWING\\
+        CABLE MATERIALS AND PROCESSES SHALL BE RoHS COMPLIANT WHERE APPLICABLE.};
+
+      % Compact title block.
+      \draw[qtgrid,line width=0.5pt] (11.20,0.40) rectangle (16.62,1.62);
+      \fill[black] (11.20,1.40) rectangle (16.62,1.62);
+      \node[text=white,font=\scriptsize\bfseries] at (13.91,1.51) {#9};
+
+      \draw[qtgrid,line width=0.28pt] (11.20,1.13) -- (16.62,1.13);
+      \draw[qtgrid,line width=0.28pt] (11.20,0.88) -- (13.65,0.88);
+      \draw[qtgrid,line width=0.28pt] (11.20,0.64) -- (13.65,0.64);
+      \draw[qtgrid,line width=0.28pt] (13.65,0.40) -- (13.65,1.40);
+      \draw[qtgrid,line width=0.28pt] (15.78,0.40) -- (15.78,1.40);
+      \draw[qtgrid,line width=0.28pt] (13.65,0.78) -- (15.78,0.78);
+      \draw[qtgrid,line width=0.28pt] (13.65,0.59) -- (15.78,0.59);
+
+      \node[anchor=west,font=\tiny\bfseries] at (11.32,1.00) {Project:};
+      \node[anchor=west,font=\tiny\color{qtblue}\bfseries,text width=1.62in] at (11.98,1.00) {#6};
+      \node[anchor=west,font=\tiny\bfseries] at (11.32,0.75) {Engineer:};
+      \node[anchor=west,font=\tiny\color{qtblue}\bfseries,text width=1.62in] at (11.98,0.75) {#7};
+      \node[anchor=west,font=\tiny\bfseries] at (11.32,0.51) {Part Number:};
+      \node[anchor=west,font=\tiny\color{qtblue}\bfseries,text width=1.46in] at (12.16,0.51) {#8};
+
+      \node[anchor=west,font=\scriptsize\color{qtblue}\bfseries,text width=1.95in] at (13.76,1.26) {#1};
+      \node[anchor=west,font=\tiny\bfseries] at (13.76,0.96) {Drawing No:};
+      \node[anchor=west,font=\tiny\color{qtblue}\bfseries,text width=0.82in] at (14.58,0.96) {#2};
+      \node[anchor=west,font=\tiny\bfseries] at (15.22,0.96) {Rev:};
+      \node[anchor=west,font=\tiny\color{qtblue}\bfseries] at (15.53,0.96) {#3};
+      \node[anchor=west,font=\tiny\bfseries] at (13.76,0.69) {Cage Code:};
+      \node[anchor=west,font=\tiny\color{qtblue}\bfseries] at (14.58,0.69) {N/A};
+      \node[anchor=west,font=\tiny\bfseries] at (15.00,0.69) {Size:};
+      \node[anchor=west,font=\tiny\color{qtblue}\bfseries] at (15.39,0.69) {#4};
+      \node[anchor=west,font=\tiny\bfseries] at (13.76,0.50) {Sheet:};
+      \node[anchor=west,font=\tiny\color{qtblue}\bfseries] at (14.26,0.50) {#5};
+
+      \node[font=\large\bfseries] at (16.20,1.04) {Q};
+      \node[font=\tiny] at (16.20,0.73) {QUANTINUUM};
+      \node[font=\tiny] at (16.20,0.52) {Broomfield, CO USA};
+    \end{scope}
+  \end{tikzpicture}%
+}
+
+\newenvironment{quantinuumcontent}{%
+  \vspace*{0.35in}\hspace*{0.48in}%
+  \begin{minipage}[t][8.95in][t]{16.04in}%
+}{%
+  \end{minipage}%
+}

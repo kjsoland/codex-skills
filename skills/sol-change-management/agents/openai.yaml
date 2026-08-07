@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sol Change Management"
+  short_description: "Prepare Sol change packages and Smartsheet rows"
+  default_prompt: "Use $sol-change-management to prepare a Sol change summary package and draft the Change and Decision Log row."

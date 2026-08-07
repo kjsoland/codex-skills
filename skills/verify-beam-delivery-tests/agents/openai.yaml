@@ -1,0 +1,4 @@
+interface:
+  display_name: "Verify Beam Delivery Tests"
+  short_description: "Map port test data into verification and waivers"
+  default_prompt: "Use $verify-beam-delivery-tests to map Beam Delivery port test results into the requirements verification columns and prepare any port-specific waiver evidence."
