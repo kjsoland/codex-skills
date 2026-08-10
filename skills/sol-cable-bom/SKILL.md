@@ -19,6 +19,19 @@ Create a traceable purchasing BOM from a Sol cable-related ICD without silently 
 8. If an order link conflicts with the source cable type or other purchasing fields, create a separate `TBD` line and identify the needed correction in Description. Never infer a replacement part.
 9. Validate headers, quantities, source coverage, blank Notes cells, filter range, and freeze panes before delivery.
 
+## To/From ICD Cable Kits
+
+Read `references/to-from-profiles.md` before processing the product-structure To/From ICD set. Use the batch builder for the ten cable-kit BOMs other than Network and Comm:
+
+```powershell
+python scripts/build_to_from_boms.py `
+  "<SharePoint Systems\ICDs folder>" `
+  "<SharePoint BOMs\Sol Computer\System Interconnect folder>" `
+  --system-monitor-xlsx "<temporary readable copy of the latest System Monitor ICD.xlsx>"
+```
+
+The System Monitor source is currently `.xlsb`. Open it read-only in Excel and save a temporary `.xlsx` copy before running the builder; never modify the SharePoint source. The batch builder prefers an active workbook in the ICD folder and otherwise selects the highest-version file in the dated release folders.
+
 ## Network and Comm ICD
 
 Read `references/network-comm-profile.md` before processing this ICD. Use the bundled builder for the standard six-column output:
