@@ -67,6 +67,7 @@ Every change summary should include:
 - Complete material deltas for each changed/impacted controlled document, including concurrent changes found in the same working revision. Attribute each delta to the active CDL, another known CDL, concurrent/unattributed content, or a release check; do not silently omit changes merely because they are outside the active CDL.
 - Review checks or open questions.
 - `Impacted Docs Assessment` section.
+- `Associated Cable BOM Impact Review` when the changed subject is a cable-related To/From ICD mapped in `references/cable-bom-impact-map.md`, including when the conclusion is no BOM impact.
 - `Generated Visual Assets` section when screenshots, crops, extracted figures, or annotated graphics are produced; treat it as an index only, not the primary evidence location.
 - SharePoint URLs or privacy-safe path labels for source evidence; avoid full local user-profile paths in user-facing artifacts.
 
@@ -132,6 +133,8 @@ For each changed subject or impacted controlled document included in the package
 ## Impacted Docs Assessment
 
 Interpret `Related Docs?` as `Impacted Docs`: the changed subject document plus released Systems documentation expected to require updates because of the proposed source change. List the subject document first, followed by downstream impacted docs.
+
+For a mapped cable-related To/From ICD, always inspect the associated product-structure cable BOM. Use the mandatory review and section template in `references/cable-bom-impact-map.md`. Add the BOM to `Likely Impacted Released Docs` and `Related Docs?` only when it is controlled/released and the ICD change requires its revision. Otherwise retain the review result as no-impact evidence or a working-artifact follow-up without misclassifying it as an impacted released Systems document.
 
 Every change summary must include this table pattern:
 
