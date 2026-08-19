@@ -31,6 +31,17 @@
 - If neither cable end is approved for slack storage, stop and obtain a route-specific disposition; do not create an unapproved loop.
 - Negative offset rows are bookkeeping; do not show them as physical tape spans. If the graphic omits a negative offset, fold its effect into the rack-storage/slack bucket so tape marks still match worksheet math.
 
+## v4p2 rack mobility allocations
+
+- Treat rack mobility as a route-file cable allowance, distinct from purchase-excess slack storage. Read it from the selected route row and include it in worksheet `Total`; do not add it off-sheet.
+- Use these uniform per-rack values in v4p2: CE1 `0.15 in`, CE2 `4.875 in`, CE3 `3.15 in`, CE4 `4.875 in`, CE5 `11.8 in`, CE6 `1.9 in`, BD/DET Motor Rack `5.65 in`, CR1 `0 in`, CR2 `1.4 in`, L2 Compute Rack `1.9 in`, and T-Rack 1-4 `24 in` each.
+- The normal basis is the v4p1 minimum route margin minus a `1 in` reserve.
+- CE2 and CE4 share the limiting CE4-to-CE2 cable. Split its available `9.75 in` equally: `4.875 in` at each rack.
+- Preserve the T-rack `24 in` exception wherever possible. T-Rack 2 remains `24 in`; its limiting shared cable constrains CE6 to `1.9 in` so that route retains `1 in`.
+- CR1 remains `0 in` because its v4p1 minimum margin is only `0.1 in`; no positive allocation can retain the full `1 in` reserve.
+- Keep Menlo, 370/493 nm Bookshelf, Gates, QPA, and other fixed/non-rack endpoint mobility rows at `0` unless a route-specific instruction says otherwise. Preserve the three pre-existing `36 in` Antenna Driver endpoint rows.
+- Ground-strap route blocks remain excluded from rack minimum-margin calculations. Preserve the generic T-rack ground-row mobility at `24 in`.
+
 ## Cable identification labels
 
 - Apply a direction-specific cable-identification label at each cable end.
@@ -59,4 +70,5 @@
 - The worksheet `Total` is authoritative.
 - Do not apply post-processing subtractions or additions for waterfalls, rack-frame rows, QPA laterals, or endpoint allowances once those rows are present in the route block.
 - Ground cables follow their route-file rows; do not apply off-sheet waterfall post-processing. Generic CE/CR and L2 ground rows still use the Tripp Lite naming/value rule when those rack families are present.
-- For the rack mobility screen, exclude ground straps, then identify each rack's minimum remaining route margin as `Actual - Total`. Compare that limiting margin with the 24 in target one rack at a time; do not imply that mobility can be restored simultaneously at both ends of the same cable. Ground straps remain included in the overall route-length audit and ICD traceback.
+- For v4p2, calculate remaining route margin as `Actual - Total` after the route-file mobility rows are included. RED is negative, BLUE is non-negative but below the `1 in` reserve, and PASS is at least `1 in`.
+- For the rack table, exclude ground straps and show the v4p1 minimum margin used as the allocation basis, the v4p2 assigned rack mobility, and the recalculated v4p2 minimum remaining margin. Ground straps remain included in the overall route-length audit and ICD traceback.
