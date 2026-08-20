@@ -6,7 +6,7 @@
 - For Tripp Lite rack families, route rows should use `Top ... Rack to Waterfall entry`, not `Top ... Rack to Cable Gantry`.
 - The base Tripp Lite top-of-rack-to-waterfall-entry value is `20.5 in`.
 - If a route row formula includes additional rack/U offset, preserve that extra term and replace only the `19.8` base with `20.5`; for example `=19.8+6*$B$2` becomes `=20.5+6*$B$2`.
-- Use the `Go over waterfall...` value in the selected route block. In v4p1, standard waterfall crossings are `9.5 in` and flat-waterfall crossings are `2 in`.
+- Use the `Go over waterfall...` value in the selected route block. In v4p2, standard waterfall crossings are `9.5 in` and flat-waterfall crossings are `2 in`.
 - CE rack ends also use `Rack Frame Thickness = 2 in` where present in the workbook.
 - T-racks use top interface panels. Do not add T-rack frame-thickness rows, and do not apply the Tripp Lite 20.5-in rule to T-rack, Menlo, 370 bookshelf, Gates enclosure, or other non-Tripp-Lite rows unless the user explicitly asks.
 
@@ -34,13 +34,19 @@
 ## v4p2 rack mobility allocations
 
 - Treat rack mobility as a route-file cable allowance, distinct from purchase-excess slack storage. Read it from the selected route row and include it in worksheet `Total`; do not add it off-sheet.
-- Use these uniform per-rack values in v4p2: CE1 `0.15 in`, CE2 `4.875 in`, CE3 `3.15 in`, CE4 `4.875 in`, CE5 `11.8 in`, CE6 `1.9 in`, BD/DET Motor Rack `5.65 in`, CR1 `0 in`, CR2 `1.4 in`, L2 Compute Rack `1.9 in`, and T-Rack 1-4 `24 in` each.
-- The normal basis is the v4p1 minimum route margin minus a `1 in` reserve.
-- CE2 and CE4 share the limiting CE4-to-CE2 cable. Split its available `9.75 in` equally: `4.875 in` at each rack.
-- Preserve the T-rack `24 in` exception wherever possible. T-Rack 2 remains `24 in`; its limiting shared cable constrains CE6 to `1.9 in` so that route retains `1 in`.
-- CR1 remains `0 in` because its v4p1 minimum margin is only `0.1 in`; no positive allocation can retain the full `1 in` reserve.
+- Use these uniform whole-inch values in v4p2: CE1 `0 in`, CE2 `5 in`, CE3 `3 in`, CE4 `5 in`, CE5 `12 in`, CE6 `2 in`, BD/DET Motor Rack `6 in`, CR1 `0 in`, CR2 `1 in`, L2 Compute Rack `2 in`, and T-Rack 1-4 `24 in` each.
+- Derive the design value from the v4p1 minimum route margin minus a `1 in` reserve, then round to the nearest inch. Zero mobility is allowed.
+- CE2 and CE4 share the limiting CE4-to-CE2 cable. Their unrounded values are `4.875 in` each; use `5 in` at each rack after rounding.
+- Preserve the T-rack `24 in` exception. T-Rack 2 remains `24 in`; use the rounded `2 in` value at CE6 on their limiting shared route.
+- CR1 remains `0 in`.
 - Keep Menlo, 370/493 nm Bookshelf, Gates, QPA, and other fixed/non-rack endpoint mobility rows at `0` unless a route-specific instruction says otherwise. Preserve the three pre-existing `36 in` Antenna Driver endpoint rows.
 - Ground-strap route blocks remain excluded from rack minimum-margin calculations. Preserve the generic T-rack ground-row mobility at `24 in`.
+
+## Cooling ICD v2 route lengths
+
+- Use `Sol_Cooling_ICD_v2.xlsx`, `Water Tubes`, as the current source for cooling-route Actual lengths.
+- Relative to v1p2, update TR1 from `354` to `394 in`, TR3 from `394` to `433 in`, and Menlo from `433` to `354 in`; the other nine represented cooling route lengths are unchanged.
+- The v2 Menlo length produces a `-32.85 in` route margin at `Cooling_ICD_CR1!A86`. Preserve and report this noncompliance; do not offset it with mobility.
 
 ## Cable identification labels
 
@@ -71,4 +77,5 @@
 - Do not apply post-processing subtractions or additions for waterfalls, rack-frame rows, QPA laterals, or endpoint allowances once those rows are present in the route block.
 - Ground cables follow their route-file rows; do not apply off-sheet waterfall post-processing. Generic CE/CR and L2 ground rows still use the Tripp Lite naming/value rule when those rack families are present.
 - For v4p2, calculate remaining route margin as `Actual - Total` after the route-file mobility rows are included. RED is negative, BLUE is non-negative but below the `1 in` reserve, and PASS is at least `1 in`.
+- Whole-inch rounding can reduce a previously exact `1 in` reserve below `1 in`; retain those results as BLUE rather than adjusting the rounded mobility off-sheet.
 - For the rack table, exclude ground straps and show the v4p1 minimum margin used as the allocation basis, the v4p2 assigned rack mobility, and the recalculated v4p2 minimum remaining margin. Ground straps remain included in the overall route-length audit and ICD traceback.

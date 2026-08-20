@@ -10,6 +10,10 @@ Mobility allocation baseline (read-only):
 
 `C:\Users\Kyle.Solander\Quantinuum LLC\Sol Hardware Project Team - Sol Project Team Channel\Systems\ICDs\Sol Floor Plan ICD\Interconnect Routing\CE Cable Length Estimates_v4p1.xlsx`
 
+Current cooling-length source:
+
+`C:\Users\Kyle.Solander\Quantinuum LLC\Sol Hardware Project Team - Sol Project Team Channel\Systems\ICDs\Cooling ICD\Sol_Cooling_ICD_v2.xlsx`
+
 Local AI work area:
 
 `C:\Users\Kyle.Solander\Documents\AI Workspace\Sol Cable Routing Procedure`
@@ -28,7 +32,8 @@ Generation scripts in the work area:
 
 - `Source\build_training_slides.py`: regenerates slide images, exact route-block screenshots, length audit, and ICD traceback CSV/text.
 - `Source\build_training_deck.ps1`: rebuilds the PowerPoint/PDF from generated slide images.
-- `Source\apply_v4p2_rack_mobility.py`: applies the approved per-rack mobility values to a v4p2 copy while preserving v4p1.
+- `Source\apply_v4p2_rack_mobility.py`: applies the approved whole-inch per-rack mobility values to v4p2 while preserving v4p1.
+- `Source\update_v4p2_from_cooling_icd.py`: synchronizes the 12 cooling route-block Actual lengths from Cooling ICD v2.
 - `README.md`: contains project-level persistent notes and current rebuild commands.
 
 ## Rebuild commands
@@ -72,12 +77,18 @@ After workbook changes, report:
 
 For v4p2 rack-mobility updates, also verify:
 
-- all 180 route blocks remain nonnegative;
+- all rack mobility rows use whole-inch values;
 - the generated audit uses a `1 in` post-mobility reserve threshold;
-- CE2 and CE4 are `4.875 in` each on their shared limiting cable;
-- T-Rack 1-4 remain `24 in`, CE6 is `1.9 in`, and the limiting CE6/TR2 cable retains `1 in`;
-- CR1 remains `0 in` and its limiting route retains `0.1 in`;
-- the procedure table shows v4p1 minimum margin, v4p2 mobility, and v4p2 minimum remaining margin.
+- CE2 and CE4 are `5 in` each after rounding their shared `4.875 in` design values;
+- T-Rack 1-4 remain `24 in`, CE6 is `2 in`, and CR1 is `0 in`;
+- the procedure table shows v4p1 design-basis margin, rounded mobility, current minimum margin, and the current limiting route.
+
+For Cooling ICD v2 synchronization, verify:
+
+- 12 cooling route-block Actual cells are checked;
+- TR1 is `394 in`, TR3 is `433 in`, and Menlo is `354 in`;
+- `Cooling_ICD_CR1!A86` is reported RED at `-32.85 in` rather than offset by mobility;
+- current tracebacks identify Cooling ICD v2 and `Water Tubes!10` for the Menlo route.
 
 For Tripp Lite waterfall-entry updates, useful checks include:
 
