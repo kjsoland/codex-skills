@@ -33,7 +33,7 @@ Generation scripts in the work area:
 - `Source\build_training_slides.py`: regenerates slide images, exact route-block screenshots, length audit, and ICD traceback CSV/text.
 - `Source\build_training_deck.ps1`: rebuilds the PowerPoint/PDF from generated slide images.
 - `Source\apply_v4p2_rack_mobility.py`: applies the approved whole-inch per-rack mobility values to v4p2 while preserving v4p1.
-- `Source\update_v4p2_from_cooling_icd.py`: synchronizes the 12 cooling route-block Actual lengths from Cooling ICD v2.
+- `Source\update_v4p2_from_cooling_icd.py`: applies Cooling ICD v2 lengths to the 12 cooling route blocks while retaining the saved Gates `552 in` and P135 `512 in` route-file allowances.
 - `README.md`: contains project-level persistent notes and current rebuild commands.
 
 ## Rebuild commands
@@ -87,8 +87,14 @@ For Cooling ICD v2 synchronization, verify:
 
 - 12 cooling route-block Actual cells are checked;
 - TR1 is `394 in`, TR3 is `433 in`, and Menlo is `354 in`;
-- `Cooling_ICD_CR1!A86` is reported RED at `-32.85 in` rather than offset by mobility;
-- current tracebacks identify Cooling ICD v2 and `Water Tubes!10` for the Menlo route.
+- Gates is retained at `552 in` versus the `512 in` ICD value, and P135 is retained at `512 in` versus the `472 in` ICD value;
+- the revised Menlo route is `Cooling_ICD_CR1!A85` and remains PASS at `47.45 in` margin;
+- current tracebacks use the shifted Menlo/Gates Actual-label cells `A85` and `A108`.
+
+For the saved TTL route changes, verify:
+
+- `CoreControlICD_TTL_Cables!A135` has Total `272 in`, Actual `314 in`, and margin `42 in`;
+- `CoreControlICD_TTL_Cables!A155` has Total `345.5 in`, Actual `394 in`, and margin `48.5 in`.
 
 For Tripp Lite waterfall-entry updates, useful checks include:
 

@@ -46,7 +46,15 @@
 
 - Use `Sol_Cooling_ICD_v2.xlsx`, `Water Tubes`, as the current source for cooling-route Actual lengths.
 - Relative to v1p2, update TR1 from `354` to `394 in`, TR3 from `394` to `433 in`, and Menlo from `433` to `354 in`; the other nine represented cooling route lengths are unchanged.
-- The v2 Menlo length produces a `-32.85 in` route margin at `Cooling_ICD_CR1!A86`. Preserve and report this noncompliance; do not offset it with mobility.
+- Preserve the later user-added v4p2 route-file allowances: Gates Actual is `552 in` versus the `512 in` ICD value, and P135 Actual is `512 in` versus the `472 in` ICD value.
+- Preserve the saved Cooling route-detail edits on the TR1/TR2/TR3 and Menlo blocks. The revised Menlo block ends at `Cooling_ICD_CR1!A85`; its Total is `306.55 in`, Actual is `354 in`, and remaining margin is `47.45 in`.
+- Do not run a blind ICD-to-route synchronization over those two allowances. Use the current project helper, which validates all 12 ICD rows while retaining the Gates and P135 route-file values.
+
+## Current TTL route edits
+
+- Preserve the saved `CoreControlICD_TTL_Cables` revisions for the CE6-to-TR2 and CE6-to-Menlo blocks.
+- CE6-to-TR2 ends at `A135` with Total `272 in`, Actual `314 in`, and margin `42 in`.
+- CE6-to-Menlo ends at `A155` with Total `345.5 in`, Actual `394 in`, and margin `48.5 in`.
 
 ## Cable identification labels
 
