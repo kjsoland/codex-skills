@@ -65,18 +65,16 @@
 
 ## Tape-marker interpretation
 
-- Apply exactly two tape markers per routed cable: one at the source waterfall entry and one at the destination waterfall exit.
-- Do not apply tape at rack-top, rack-exit, enclosure-entry, table, connector, or other strain-relief datums.
-- The source tape datum is the end of the route row immediately before the first `Go over waterfall...` row. In Tripp Lite rack examples this is normally the highlighted `Top ... Rack to Waterfall entry` row.
-- Calculate the source-entry tape from the From connector by summing the preceding route rows through that highlighted entry row and adding the source-side slack allocation.
-- The destination tape datum is the end of the last `Go over waterfall...` row. Calculate it backward from the To connector by summing the route rows after that highlighted crossing row and adding any destination-side slack allocation.
-- Use each cable connector as its own `0 in` measurement datum: measure Tape 1 forward from the From end and measure Tape 2 backward from the To end.
-- Training diagrams should show every source-side route step from the cable beginning through the highlighted Tape 1 row, followed by the total From-end-to-Tape-1 measurement.
-- Show every destination-side route step after the highlighted Tape 2 row through the cable end, followed by the total Tape-2-to-To-end measurement; note that this is measured backward from the To end.
-- Summarize the route between Tape 1 and Tape 2 without providing a tape-to-tape distance.
-- Do not place tape at the source waterfall exit or destination waterfall entry. The tape-to-tape span includes the first waterfall crossing, all route rows between waterfalls, and the destination waterfall crossing.
-- Continue to allocate slack only at approved rack interiors: split between two slack-capable racks, keep CE/Chiller/L2/Motor-to-T/Menlo slack entirely at the slack-capable rack end, and keep rack-to-QPA/Gates slack at the rack end. Slack changes the connector-to-waterfall measurement but does not create an additional tape point.
+- For new rack-to-rack route-marking slides, use four physical marks per cable: rack exit and gantry entry at the source rack, plus gantry entry and rack exit at the destination rack. Match the presentation used by training Slides 5-6.
+- Use each cable connector as its own `0 in` datum. Measure both source-end marks forward from the source connector and both destination-end marks backward from the destination connector.
+- The rack-exit mark ends the rack-side route. Calculate it from the local connector using the applicable internal-rack route, rack-frame row, and purchase-slack allocation. Do not include the rack mobility allowance in the rack-exit distance.
+- The gantry-entry mark equals the rack-exit distance plus the exit-to-gantry route and the local rack mobility allowance. When the route file uses waterfall wording, the gantry-entry boundary is the end of the applicable `Top ... Rack to Waterfall entry` row.
+- Keep rack mobility between the rack-exit and gantry-entry marks so the marked span is the base exit-to-gantry route plus mobility.
+- Reconcile the complete cable as source connector-to-gantry entry + gantry-to-gantry route + destination gantry entry-to-connector = route-file `Actual`.
+- Do not add separate marks at waterfall crossings, rack tops, or connectors. Slack and mobility affect the four connector-referenced distances but do not create additional tape points.
+- Continue to allocate slack only at approved rack interiors: split between two slack-capable racks, keep CE/Chiller/L2/Motor-to-T/Menlo slack entirely at the slack-capable rack end, and keep rack-to-QPA/Gates slack at the rack end.
 - In graphics, place slack only at the physical cable ends: source slack first and rack-to-rack destination slack last.
+- Existing non-rack and waterfall-only examples retain their route-specific marking treatment until revised. Do not invent a rack exit or rack interior at QPA, Gates, or another non-rack endpoint.
 - Negative offset rows are bookkeeping only; fold them into the applicable slack/storage allocation and do not create tape points for them.
 
 ## Audit rule

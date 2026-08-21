@@ -104,23 +104,20 @@ For Tripp Lite waterfall-entry updates, useful checks include:
 - formula rows preserve added offsets, e.g. `=20.5+6*$B$2`;
 - standard `Go over waterfall` rows are `9.5`, while v4p2 flat-waterfall rows are `2`.
 
-For waterfall-only tape training, useful checks include:
+For rack-exit and gantry-entry marking slides, useful checks include:
 
-- exactly two tape markers appear per route: source waterfall entry and destination waterfall exit;
-- no rack-top, rack-exit, enclosure-entry, table, connector, or strain-relief tape markers remain;
-- the source marker is at the end of the row immediately before the first `Go over waterfall...` row;
-- the destination marker is at the end of the last `Go over waterfall...` row;
-- the tape-to-tape span includes both waterfall crossings and all intervening route rows;
-- the source-entry measurement includes the source-side slack allocation;
-- the destination-exit backward measurement includes the destination-side slack allocation, when applicable.
-- each route bar shows a visible `0 in` datum at both cable ends;
-- rack-to-QPA/Gates graphics show all slack as the first source-rack segment and none at the endpoint;
-- rack-to-rack graphics show half the slack as the first source segment and half as the final destination segment;
-- slack segments are visually distinct, labeled `SLACK`, and never shown in the middle of a cable route;
-- the source route bar shows every step from the From datum through the highlighted Tape 1 row, followed by the total measurement;
-- the destination route bar shows every step after the highlighted Tape 2 row through the To datum, followed by the total measurement;
-- the destination measurement is explicitly called out as measured backward from the To end;
-- the between-tape route is summarized without a distance.
+- four physical marks appear per rack-to-rack route: rack exit and gantry entry at each end;
+- each cable connector is a visible `0 in` datum;
+- both source-end marks are measured forward from the source connector;
+- both destination-end marks are measured backward from the destination connector;
+- each rack-exit distance includes the local rack-side route and allocated purchase slack but excludes rack mobility;
+- each gantry-entry distance adds the exit-to-gantry base route and local rack mobility to the rack-exit distance;
+- rack mobility is shown between the rack-exit and gantry-entry marks;
+- source gantry-entry distance + gantry-to-gantry route + destination gantry-entry distance reconciles to route-file `Actual`;
+- rack-to-rack graphics split purchase slack equally, with one half at each physical cable end;
+- no extra tape point is shown at a waterfall crossing, rack top, or connector;
+- shared route blocks use one controlled set of marks only when that conservative treatment is explicit;
+- non-rack endpoints retain their route-specific treatment rather than receiving an invented rack exit.
 
 ## ICD traceback notes
 
