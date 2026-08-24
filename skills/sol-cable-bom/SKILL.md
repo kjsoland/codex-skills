@@ -17,8 +17,9 @@ Create a traceable purchasing BOM from a Sol cable-related ICD without silently 
 6. Set `Quantity` to the exact number of units required by the design. Never replace it with a pack count or round it up to a supplier package quantity.
 7. Keep the Arena part-number cells blank. Use `TBD` for an unresolved vendor part number so missing purchasing data is visible.
 8. Leave every Notes cell blank. The Notes column is reserved for drawing notes that link back to BOM items.
-9. If an order link conflicts with the source cable type or other purchasing fields, create a separate `TBD` line and identify the needed correction in Description. Never infer a replacement part.
-10. Validate headers, exact required quantities, source coverage, ordering-package math, blank Notes cells, filter range, and freeze panes before delivery.
+9. Keep `Description` limited to item identity and relevant product specifications. Put quantity derivation, stock checks, sourcing context, compatibility cautions, and other procurement rationale in `Ordering Notes`, never in `Description`.
+10. If an order link conflicts with the source cable type or other purchasing fields, create a separate `TBD` line and identify the needed correction in `Ordering Notes`. Never infer a replacement part.
+11. Validate headers, concise item descriptions, exact required quantities, source coverage, ordering-package math, blank Notes cells, filter range, and freeze panes before delivery.
 
 ## To/From ICD Cable Kits
 
@@ -61,10 +62,11 @@ Use plain cells with no color formatting. Bold only the header row, freeze it, e
 When ordering information is included, append these columns after `Notes`:
 
 7. Ordering Information
-8. Order Packaging
-9. Spares
+8. Ordering Notes
+9. Order Packaging
+10. Spares
 
-Place any additional sourcing column, such as `Distributor`, after `Spares`. `Quantity` remains the exact design requirement. For a multi-pack, record the actual purchase package in `Order Packaging`, for example `1 x 10-pack (10 units ordered)`, and set numeric `Spares` to total units ordered minus `Quantity`. Leave `Order Packaging` blank for ordinary per-each purchases; set `Spares` to `0` when exact per-each ordering is known and leave it blank when the order unit is unresolved. Hyperlinks are allowed only in `Ordering Information` and sourcing columns when the user requests order links.
+Use `Ordering Notes` for quantity traceability and procurement caveats without expanding the item description. Place any additional sourcing column, such as `Distributor`, after `Spares`. `Quantity` remains the exact design requirement. For a multi-pack, record the actual purchase package in `Order Packaging`, for example `1 x 10-pack (10 units ordered)`, and set numeric `Spares` to total units ordered minus `Quantity`. Leave `Order Packaging` blank for ordinary per-each purchases; set `Spares` to `0` when exact per-each ordering is known and leave it blank when the order unit is unresolved. Hyperlinks are allowed only in `Ordering Information` and sourcing columns when the user requests order links.
 
 ## Setup and Example
 
