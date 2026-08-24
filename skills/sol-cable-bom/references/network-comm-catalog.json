@@ -1,5 +1,33 @@
 {
   "links": {
+    "https://www.monoprice.com/product?p_id=44512": {
+      "vendor": "Monoprice",
+      "vendor_part_number": "44512",
+      "identifier_type": "Manufacturer product number",
+      "description": "50 ft Monoprice SlimRun Cat6A UTP, 30AWG, 3.0 mm OD, round black RJ45 Ethernet patch cable, 10G",
+      "canonical_url": "https://www.monoprice.com/product?p_id=44512"
+    },
+    "https://directmacro.com/monoprice-33257.html": {
+      "vendor": "Monoprice",
+      "vendor_part_number": "33257",
+      "identifier_type": "Manufacturer part number",
+      "description": "30 ft Monoprice SlimRun Cat6A UTP, 30AWG, round black RJ45 Ethernet patch cable, 10G",
+      "canonical_url": "https://directmacro.com/monoprice-33257.html"
+    },
+    "https://www.monoprice.com/product?p_id=33237": {
+      "vendor": "Monoprice",
+      "vendor_part_number": "33237",
+      "identifier_type": "Manufacturer product number",
+      "description": "20 ft Monoprice SlimRun Cat6A UTP, 30AWG, round black RJ45 Ethernet patch cable, 10G",
+      "canonical_url": "https://www.monoprice.com/product?p_id=33237"
+    },
+    "https://www.avalive.com/NTI/cat6a-uthn-75-gray/282157/productDetail.php": {
+      "vendor": "NTI",
+      "vendor_part_number": "CAT6A-UTHN-75-GRAY",
+      "identifier_type": "Manufacturer part number",
+      "description": "75 ft NTI/VPI ultra-thin Cat6A UTP, 32AWG, 2.8 mm OD, round gray RJ45 Ethernet patch cable, 10G",
+      "canonical_url": "https://www.avalive.com/NTI/cat6a-uthn-75-gray/282157/productDetail.php"
+    },
     "https://tinyurl.com/2mamm7x5": {
       "vendor": "VANDESAIL",
       "vendor_part_number": "B08PK85DY2",
