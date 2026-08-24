@@ -14,10 +14,11 @@ Create a traceable purchasing BOM from a Sol cable-related ICD without silently 
 3. If the source workbook is open and locked, use the existing Excel application to `SaveCopyAs` a temporary `.xlsx`; do not save, close, or modify the user's workbook.
 4. Read the relevant ICD cable sheets and count one cable instance per populated design row.
 5. Aggregate only records that resolve to the same orderable identifier and compatible cable type/length.
-6. Keep the Arena part-number cells blank. Use `TBD` for an unresolved vendor part number so missing purchasing data is visible.
-7. Leave every Notes cell blank. The Notes column is reserved for drawing notes that link back to BOM items.
-8. If an order link conflicts with the source cable type or other purchasing fields, create a separate `TBD` line and identify the needed correction in Description. Never infer a replacement part.
-9. Validate headers, quantities, source coverage, blank Notes cells, filter range, and freeze panes before delivery.
+6. Set `Quantity` to the exact number of units required by the design. Never replace it with a pack count or round it up to a supplier package quantity.
+7. Keep the Arena part-number cells blank. Use `TBD` for an unresolved vendor part number so missing purchasing data is visible.
+8. Leave every Notes cell blank. The Notes column is reserved for drawing notes that link back to BOM items.
+9. If an order link conflicts with the source cable type or other purchasing fields, create a separate `TBD` line and identify the needed correction in Description. Never infer a replacement part.
+10. Validate headers, exact required quantities, source coverage, ordering-package math, blank Notes cells, filter range, and freeze panes before delivery.
 
 ## To/From ICD Cable Kits
 
@@ -55,7 +56,15 @@ Create one worksheet named `Cable BOM` with these columns in this order:
 5. Description
 6. Notes
 
-Use plain cells with no color formatting. Bold only the header row, freeze it, enable filtering, and wrap long descriptions. Leave the Notes column completely blank and do not add hyperlinks, comments, banding, colored fills, or colored fonts. Keep the workbook purchasing-focused; do not add unrelated ICD data sheets.
+Use plain cells with no color formatting. Bold only the header row, freeze it, enable filtering, and wrap long descriptions. Leave the Notes column completely blank and do not add comments, banding, colored fills, or colored fonts. Do not add hyperlinks unless the workbook includes ordering information as described below. Keep the workbook purchasing-focused; do not add unrelated ICD data sheets.
+
+When ordering information is included, append these columns after `Notes`:
+
+7. Ordering Information
+8. Order Packaging
+9. Spares
+
+Place any additional sourcing column, such as `Distributor`, after `Spares`. `Quantity` remains the exact design requirement. For a multi-pack, record the actual purchase package in `Order Packaging`, for example `1 x 10-pack (10 units ordered)`, and set numeric `Spares` to total units ordered minus `Quantity`. Leave `Order Packaging` blank for ordinary per-each purchases; set `Spares` to `0` when exact per-each ordering is known and leave it blank when the order unit is unresolved. Hyperlinks are allowed only in `Ordering Information` and sourcing columns when the user requests order links.
 
 ## Setup and Example
 
