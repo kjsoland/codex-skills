@@ -74,7 +74,8 @@
 - Do not add separate marks at waterfall crossings, rack tops, or connectors. Slack and mobility affect the four connector-referenced distances but do not create additional tape points.
 - Continue to allocate slack only at approved rack interiors: split between two slack-capable racks, keep CE/Chiller/L2/Motor-to-T/Menlo slack entirely at the slack-capable rack end, and keep rack-to-QPA/Gates slack at the rack end.
 - In graphics, place slack only at the physical cable ends: source slack first and rack-to-rack destination slack last.
-- Existing non-rack and waterfall-only examples retain their route-specific marking treatment until revised. Do not invent a rack exit or rack interior at QPA, Gates, or another non-rack endpoint.
+- Routes between one rack and one fixed/non-rack endpoint use three physical marks: one route-boundary mark at the fixed endpoint and rack-exit plus gantry-entry marks at the rack end.
+- Do not invent a rack exit or rack interior at QPA, Gates, Dewar, 370 Bookshelf, or another fixed/non-rack endpoint. Calculate the two rack-end marks with the same internal-route, exit-to-gantry, mobility, and approved slack-storage rules used for rack-to-rack routes.
 - Negative offset rows are bookkeeping only; fold them into the applicable slack/storage allocation and do not create tape points for them.
 
 ## Network media-specific Actual lengths

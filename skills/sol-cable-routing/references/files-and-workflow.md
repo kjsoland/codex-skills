@@ -130,7 +130,9 @@ For rack-exit and gantry-entry marking slides, useful checks include:
 - rack-to-rack graphics split purchase slack equally, with one half at each physical cable end;
 - no extra tape point is shown at a waterfall crossing, rack top, or connector;
 - shared route blocks use one controlled set of marks only when that conservative treatment is explicit;
-- non-rack endpoints retain their route-specific treatment rather than receiving an invented rack exit.
+- rack-to-fixed routes use three physical marks: one route-boundary mark at the fixed endpoint and rack-exit plus gantry-entry marks at the rack end;
+- fixed/non-rack endpoints such as QPA, Gates, Dewar, and 370 Bookshelf do not receive an invented rack exit;
+- the 370 Bookshelf-to-L2 Fiber marks are `109.2 in` at 370BS and `192.902 / 237.902 in` for L2 rack exit / gantry entry; Copper uses `109.2 in` at 370BS and `305.5 / 350.5 in` at L2.
 
 ## ICD traceback notes
 
