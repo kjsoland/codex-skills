@@ -17,7 +17,7 @@ The label rules come from the Sol Cable Routing Procedure, `Sol_Cable_Routing_Tr
 
 ## Label layout
 
-Default to Excel plus UTF-8 CSV in the workspace output folder. Use exactly one column, no header, no separators, and two consecutive rows per cable: From Side, then To Side. Each cell contains:
+Default to Excel plus UTF-8 CSV in the workspace output folder, and copy both validated exports into the authoritative source ICD folder. When the source is inside a dated release subfolder, put the exports in the parent ICD folder, leaving the release package unchanged. Include the source revision in the export filenames and verify that the ICD-folder copies match the workspace files. Honor a user-specified destination instead when provided. Use exactly one column, no header, no separators, and two consecutive rows per cable: From Side, then To Side. Each cell contains:
 
 ```text
 <FROM SIDE or TO SIDE> <Designator>    ICD: <ACRONYM>
