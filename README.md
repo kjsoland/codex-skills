@@ -4,6 +4,8 @@ Reusable skills and workflow bundles for Codex.
 
 ## Included skills
 
+- [`cable-labels`](skills/cable-labels/): export single-column cable labels,
+  alternating From Side and To Side for each cable.
 - [`harness-drawing`](skills/harness-drawing/): create professional cable harness
   and cable assembly drawing packages.
 - [`sol-cable-routing`](skills/sol-cable-routing/): maintain the Sol cable-routing
