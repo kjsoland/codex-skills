@@ -16,6 +16,10 @@ Read the relevant reference before making changes:
 
 Prefer the old slide/PDF training format unless the user explicitly asks for a written procedure. Do not create a standalone Markdown/PDF procedure as the default deliverable.
 
+## Cable-kit procedure destination
+
+Save cable-kit routing procedure deliverables in the applicable SharePoint-synced BOM cable-kit folder, beside its BOM and cable labels, unless the user specifies another destination. Put the PDF, PowerPoint, and installation checklist together and verify their links from that destination. The AI Workspace is a build/staging area; a workspace-only output does not complete delivery. See `references/files-and-workflow.md` for the BOM root and BD Beamplate destination.
+
 ## Standard workflow
 
 1. Locate the synced SharePoint workbook locally; do not browse SharePoint first.

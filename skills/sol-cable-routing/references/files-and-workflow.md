@@ -1,5 +1,19 @@
 # Files and workflow
 
+## Cable-kit procedure delivery
+
+Default delivery root for cable-kit routing procedures:
+
+`C:\Users\Kyle.Solander\Quantinuum LLC\Sol Hardware Project Team - Sol Project Team Channel\BOMs\Sol Computer\System Interconnect`
+
+Locate the applicable cable-kit folder under this root using its existing BOM and labels. Deliver the procedure PDF, PowerPoint, and installation checklist together there. Retain generation scripts, source snapshots, slide images, and build audits in the AI Workspace. Older procedure outputs in ICD folders or the workspace do not override this destination rule; an explicit user destination does.
+
+BD Beamplate EICD destination:
+
+`C:\Users\Kyle.Solander\Quantinuum LLC\Sol Hardware Project Team - Sol Project Team Channel\BOMs\Sol Computer\System Interconnect\BD Beamplate Cable Kit`
+
+For the BD-E v7 package, deliver `BD_Beamplate_EICD_Cable_Routing_Procedure_v7_Draft.pdf`, the corresponding `.pptx`, and `BD_Beamplate_EICD_v7_Routing_Checklist.xlsx`. Keep the checklist beside the procedure for its relative workflow link. Verify copied file hashes and link targets, and report the BOM-folder paths to the user. Preserve existing deliverables before replacing differing files.
+
 ## Source files
 
 Primary route workbook:
