@@ -17,6 +17,8 @@ The label rules come from the Sol Cable Routing Procedure, `Sol_Cable_Routing_Tr
 
 ## Label layout
 
+Use 6-point font for all cable-label text, including the side/designator/ICD line and both endpoint lines. The Excel export uses Arial 6 pt. CSV cannot store font formatting; apply 6 pt in the label-printer import template. Honor an explicit user font override.
+
 Default to Excel plus UTF-8 CSV in the workspace output folder, and copy both validated exports into the authoritative source ICD folder. When the source is inside a dated release subfolder, put the exports in the parent ICD folder, leaving the release package unchanged. Include the source revision in the export filenames and verify that the ICD-folder copies match the workspace files. Honor a user-specified destination instead when provided. Use exactly one column, no header, no separators, and two consecutive rows per cable: From Side, then To Side. Each cell contains:
 
 ```text

@@ -50,7 +50,7 @@ def export(source, output, icd, skip_unused=False):
         target.append([label])
         cell = target.cell(target.max_row, 1)
         cell.data_type = 's'
-        cell.font = Font(name='Arial', size=11)
+        cell.font = Font(name='Arial', size=6)
         cell.alignment = Alignment(vertical='center', wrap_text=True)
         target.row_dimensions[target.max_row].height = 54
     target.column_dimensions['A'].width = 78
@@ -65,6 +65,7 @@ def export(source, output, icd, skip_unused=False):
     check = openpyxl.load_workbook(output, data_only=True).active
     assert check.max_column == 1 and check.max_row == len(labels)
     assert list(check.values) == [(label,) for label in labels]
+    assert all(cell.font.sz == 6 for row in check.iter_rows() for cell in row)
     with csv_path.open(newline='', encoding='utf-8-sig') as handle:
         assert list(csv.reader(handle)) == [[label] for label in labels]
     print(f'Excluded unused source rows: {excluded}')
