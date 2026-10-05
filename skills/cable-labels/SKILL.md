@@ -31,6 +31,8 @@ Keep the full FROM and TO definitions in the same order on both labels; only the
 
 Do not invent missing endpoints or export unevaluated formulas. Report incomplete rows and resolve them before producing an apparently complete label set. Ignore fully empty source rows only. Missing designators are allowed by the procedure; missing endpoint definitions are not.
 
+Deliver raw XLSX/CSV label files in one flat label folder within the applicable BOM folder. Encode tab, physical segment, PN/type, and revision in filenames rather than creating nested status or tab folders. Keep manifests, tracebacks, validation reports, build sources, and superseded archives elsewhere, normally in the workspace audit area. Preserve `PN_UNSPECIFIED` in applicable filenames and keep their review status in the separate manifest. When moving labels, update audit links to their delivered paths.
+
 ## Grouped labeling runs
 
 When grouping labels for physical labeling automation, keep source tabs separate and split each tab by cable vendor/part number/type and specified length. A shared base part number with different lengths does not identify identical cables. Preserve source order within each group. Put Primary and Secondary endpoint sets in separate files, and include the source revision, tab, endpoint set, and cable identity in filenames or their folder path. Keep the standard one-column From Side/To Side pair layout in every import file; put counts and source-row traceability in a separate manifest.
