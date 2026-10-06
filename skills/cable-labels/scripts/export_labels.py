@@ -7,7 +7,7 @@ import openpyxl
 from openpyxl.styles import Alignment, Font
 
 
-def export(source, output, icd, skip_unused=False):
+def export(source, output, icd, skip_unused=False, export_csv=False):
     source, output = Path(source), Path(output)
     if output.suffix.lower() != '.xlsx':
         raise ValueError('Output must have an .xlsx extension')
@@ -60,16 +60,20 @@ def export(source, output, icd, skip_unused=False):
     output.parent.mkdir(parents=True, exist_ok=True)
     result.save(output)
     csv_path = output.with_suffix('.csv')
-    with csv_path.open('w', newline='', encoding='utf-8-sig') as handle:
-        csv.writer(handle).writerows([label] for label in labels)
+    if export_csv:
+        with csv_path.open('w', newline='', encoding='utf-8-sig') as handle:
+            csv.writer(handle).writerows([label] for label in labels)
     check = openpyxl.load_workbook(output, data_only=True).active
     assert check.max_column == 1 and check.max_row == len(labels)
     assert list(check.values) == [(label,) for label in labels]
     assert all(cell.font.sz == 6 for row in check.iter_rows() for cell in row)
-    with csv_path.open(newline='', encoding='utf-8-sig') as handle:
-        assert list(csv.reader(handle)) == [[label] for label in labels]
+    if export_csv:
+        with csv_path.open(newline='', encoding='utf-8-sig') as handle:
+            assert list(csv.reader(handle)) == [[label] for label in labels]
     print(f'Excluded unused source rows: {excluded}')
-    print(f'Validated {len(labels) // 2} cables, {len(labels)} labels.\n{output}\n{csv_path}')
+    print(f'Validated {len(labels) // 2} cables, {len(labels)} labels.\n{output}')
+    if export_csv:
+        print(csv_path)
 
 
 if __name__ == '__main__':
@@ -78,5 +82,6 @@ if __name__ == '__main__':
     parser.add_argument('output')
     parser.add_argument('--icd', required=True, help='Governing ICD acronym from the routing procedure')
     parser.add_argument('--skip-unused', action='store_true', help='Exclude rows with literal NONE designator and all three To fields NONE')
+    parser.add_argument('--csv', action='store_true', help='Also export UTF-8 CSV; only use when the user explicitly requests CSV')
     args = parser.parse_args()
-    export(args.source, args.output, args.icd, args.skip_unused)
+    export(args.source, args.output, args.icd, args.skip_unused, args.csv)
