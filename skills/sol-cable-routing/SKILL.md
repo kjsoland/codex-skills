@@ -1,6 +1,6 @@
 ---
 name: sol-cable-routing
-description: Maintain Sol cable routing workbook, routing-training slide deck, route-length audit, cable tape-marking examples, and ICD traceback outputs. Use when Codex is asked to edit or audit the Sol Floor Plan ICD cable route workbook, update cable routing/training slides, apply Sol routing rules such as waterfall-entry lengths or Tripp Lite rack assumptions, expand the deck to more route blocks, or explain route-file tape-marker calculations.
+description: Create or update Sol cable-kit routing procedures in the established PowerPoint/PDF format, including cable grouping and installation checklists; maintain the route workbook, route-length audits, tape marks and ICD traceback. Use for Sol cable routing and training packages, rather than harness drawings or cable-label exports alone.
 ---
 
 # Sol Cable Routing
@@ -13,8 +13,9 @@ Read the relevant reference before making changes:
 
 - `references/routing-rules.md` for durable routing assumptions and tape-marker rules.
 - `references/files-and-workflow.md` for paths, scripts, rebuild commands, and verification.
+- `references/procedure-format.md` before creating or reformatting a cable-kit procedure.
 
-Prefer the old slide/PDF training format unless the user explicitly asks for a written procedure. Do not create a standalone Markdown/PDF procedure as the default deliverable.
+Follow the established cable-routing procedure format unless the user explicitly requests a different format. **Network and Comm is the master for the TOC, slack-rules slide and route-block slides; use Core Control's grouping slide when grouping applies.** Inspect their rendered examples before building. Each route slide must show the large floor-plan route graphic with the endpoint marking bubbles on that same slide. Include the ICD acronym legend from the current Integration procedure on the cable-label slide. See `references/procedure-format.md` for the front matter, route layout and visual acceptance checks.
 
 ## Cable-kit procedure destination
 

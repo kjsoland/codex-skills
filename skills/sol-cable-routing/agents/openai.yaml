@@ -1,4 +1,4 @@
 interface:
   display_name: "Sol Cable Routing"
-  short_description: "Maintain Sol routing workbook and training deck"
-  default_prompt: "Use $sol-cable-routing to update the Sol cable routing workbook, training deck, and audit outputs."
+  short_description: "Build Sol routing procedures and maintain route data"
+  default_prompt: "Use $sol-cable-routing to create or update a Sol cable routing procedure in the established format, including grouping, labels, slack rules, route blocks, and its checklist, or maintain the route workbook and audit outputs."
