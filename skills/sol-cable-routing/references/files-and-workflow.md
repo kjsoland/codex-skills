@@ -45,6 +45,10 @@ Current training outputs:
 
 Generation scripts in the work area:
 
+- `Source\kit_front_matter.py`: shared `label_slide` / `refresh_kit_label` renderer and original `slack_slide`. Use the label renderer in every kit generator; it reads the live Integration Plan acronym table and writes source provenance beside the rendered image.
+- `Source\kit_label_profiles.json`: kit-specific label examples and instructions used as defaults by the shared renderer. Refresh these from current source definitions when kit labeling changes.
+- `Templates\Sol_Cable_Routing_Label_Slide_Template.pptx`: local reusable labeling/acronym slide, with PDF/PNG previews. Keep project artifacts out of the public skill repository.
+- `Source\update_label_slides.py`: targeted retrofit for current delivered procedures. Stages and verifies only the label-page replacement, checks all other PDF pages and PowerPoint slide content/navigation, then publishes from a hash-checked manifest with backups using `--publish`. It preserves checklist files and existing page numbers. Inspect its current kit/destination inventory before reusing it.
 - `Source\build_training_slides.py`: regenerates slide images, exact route-block screenshots, length audit, and ICD traceback CSV/text.
 - `Source\build_training_deck.ps1`: rebuilds the PowerPoint/PDF from generated slide images.
 - `Source\network_comm_actual_length_audit.py`: compares Network and Comm ICD column N with the media-specific route Actual rows.

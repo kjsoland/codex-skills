@@ -10,7 +10,8 @@ Existing implementations worth reusing:
 
 - `build_network_comm_routing_deck.py`: `slide_index` and `slide_full_route_graphic` provide the master TOC and route-block formats.
 - `build_core_control_procedure.py`: `bundle_preparation` provides the grouping-slide layout and three preparation steps.
-- `kit_front_matter.py`: original mobility/slack-allocation slide used across the kits.
+- `kit_front_matter.py`: `label_slide` / `refresh_kit_label` provide the mandatory shared labeling slide; `slack_slide` provides the original mobility/slack-allocation slide.
+- `Templates/Sol_Cable_Routing_Label_Slide_Template.pptx` under the cable-routing work area: reusable single-slide template, with matching PDF/PNG previews. Its design comes from training slide 1, `Slides/slide_01_cable_labeling.png`.
 
 Keep these project drawings and generated artifacts in their existing local/SharePoint locations. They are examples to inspect, not assets to copy into a public skill repository.
 
@@ -22,7 +23,11 @@ Include the title/scope, linked released floor plan, six-step installation workf
 
 Preserve the Network and Comm TOC style: three columns of rounded route entries, alternating pale/white fills, circular page-number badges, and linked entries. Use **one entry per route section**; name both physical components (including rack/location), and show the actual section-start slide number in the badge. Link to the grouping/preparation slide when present, otherwise the route slide. Do not list grouping and marking as separate TOC entries or show separate preparation/marking page numbers in the TOC. The preparation slide can link forward to its marking slide. Derive numbers from the final slide order and verify both displayed numbers and PDF/PowerPoint link targets after reordering. Do not replace this with a source-family summary table.
 
-On the cable-label slide, show the ICD acronym legend beside the From/To label examples. Obtain the code-to-document-name mappings from the current Integration procedure/Integration Plan To/From ICD list; use the current synced HTML/source, not a remembered or guessed list. Link or record that source, retain all listed codes, and emphasize the current kit's acronym. Refresh the chart when the Integration procedure changes. The established Integration Plan location is `Integration/Integration Plan/Sol_Integration_Plan_v3.html` under the synced project-team folder (also accessible through the workspace's `integration-plan-playground/v2` junction).
+Every cable routing procedure includes the shared **Cable Labeling, ICD Acronyms, and Tape Workflow** slide in its front matter, before routing begins. Retain the training slide's From-End and To-End examples on the left, the complete ICD acronym chart on the right, and the six-step tape workflow along the bottom. A label-only slide, a kit acronym alone, or a link to another procedure does not satisfy this requirement. Use `kit_front_matter.label_slide` or `refresh_kit_label` in the generator so rebuilding cannot omit the chart.
+
+Obtain the code-to-document-name mappings from the current Integration procedure/Integration Plan To/From ICD list; use the current synced HTML/source, not a remembered or guessed list. Link or record that source, retain all listed codes, and emphasize the current kit's acronym. The established Integration Plan location is `Integration/Integration Plan/Sol_Integration_Plan_v3.html` under the synced project-team folder (also accessible through the workspace's `integration-plan-playground/v2` junction). Refresh the chart when this source changes; the shared helper reads it and records the source hash in the generated `.label.json` sidecar.
+
+Adapt the examples and kit notes without dropping endpoint definitions, blank-designator rules, print instructions, source exceptions or missing-label warnings. `Source/kit_label_profiles.json` supplies local defaults; pass current source-derived examples and instructions when rebuilding a kit. Preserve the complete FROM/TO order on both examples. Use shorter example boxes when needed to retain detailed kit rules legibly. Keep the kit footer and correct page number. Use the selected route's marking rules rather than carrying the training deck's fixed slide-number references or workbook revision into another deck.
 
 Keep the operational slides concise. Put detailed source reconciliation and audit tables after a backup divider or in the companion workbook; retain an applicable source note on the affected route slide.
 
@@ -51,7 +56,7 @@ For a useful multi-cable group, insert a **Bundle Preparation** slide immediatel
 
 ## Format validation and delivery
 
-Compare rendered output side by side with at least one current delivered procedure. Inspect the title, workflow, shared slack slide, a multi-cable preparation/route pair, a rack-to-rack route, and a rack-to-fixed route when those exist. Check map size/aspect, endpoint bubbles, red dimensions, selected color key, warning placement, readable text and clipping. Verify page references and hyperlinks after reordering.
+Compare rendered output side by side with at least one current delivered procedure. Inspect the title, workflow, shared label/acronym slide, shared slack slide, a multi-cable preparation/route pair, a rack-to-rack route, and a rack-to-fixed route when those exist. Confirm both PDF and PowerPoint include every current acronym mapping, correct label direction and the kit-specific instructions. Check map size/aspect, endpoint bubbles, red dimensions, selected color key, warning placement, readable text and clipping. Verify page references and hyperlinks after reordering.
 
 On a format-only correction, preserve cable scope, source data, dimensions, unresolved notes, and existing installer/checker entries. Back up replaced deliverables and remap only the necessary navigation fields. Recheck cable coverage and marking reconciliation, then deliver PDF, PowerPoint and checklist together beside the applicable BOM and labels, as specified in `files-and-workflow.md`.
 
