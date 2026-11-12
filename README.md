@@ -4,6 +4,8 @@ Reusable skills and workflow bundles for Codex.
 
 ## Included skills
 
+- [`lab-safety-graphic`](skills/lab-safety-graphic/): create one-page lab hazard
+  maps with a central layout, supporting photos, and supplied response steps.
 - [`cable-labels`](skills/cable-labels/): export single-column cable labels,
   alternating From Side and To Side for each cable.
 - [`harness-drawing`](skills/harness-drawing/): create professional cable harness

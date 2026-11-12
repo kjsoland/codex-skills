@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lab Safety Graphic"
+  short_description: "Create lab hazard maps with photos and response steps"
+  default_prompt: "Use $lab-safety-graphic to make a one-page lab hazard graphic with a central layout, supporting photos, and response steps."

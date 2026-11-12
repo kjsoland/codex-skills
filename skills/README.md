@@ -2,6 +2,7 @@
 
 | Skill | Purpose |
 | --- | --- |
+| [`lab-safety-graphic`](lab-safety-graphic/) | One-page lab hazard maps with supporting photos and response steps |
 | [`harness-drawing`](harness-drawing/) | Cable harness and cable assembly drawing packages |
 | [`sol-cable-bom`](sol-cable-bom/) | Sol ICD-to-cable-kit BOM extraction and auditing |
 | [`sol-cable-routing`](sol-cable-routing/) | Sol route workbook, route-length audit, and training material |
