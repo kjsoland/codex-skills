@@ -29,6 +29,12 @@ Copy response steps and phone numbers from the user's instructions or current su
 
 For laser hazards, read [laser-inputs.md](references/laser-inputs.md). Assembly ICDs are useful for laser identities and rack placement. Hazard classifications, exposure boundaries, eyewear requirements, and emergency actions need explicit support in the relevant source material.
 
+## Live status boards
+
+When the user wants movable magnets, put a compact status table beside each location. Use the user's state labels, for example **Laser off**, **On contained**, and **On active hazard**. Give independently tracked lasers their own rows, with wavelength and a short identifier to distinguish equal-wavelength sources. Leave every state cell blank for setup; the document must not imply a live operating state. Keep the map dominant and use small ICD detail views where they help identify the sources.
+
+Size cells for the stated magnet dimensions. If none are provided, choose practical cells for the requested sheet and report their printed dimensions. Preserve units in the table header or every row. Do not add response instructions when the user excludes them. Record source disagreements privately and apply the user's explicit resolution without silently rewriting the source document.
+
 ## Build and deliver
 
 1. Preserve the current accepted files before a material edit. Adapt the existing project builder when it produces editable shapes and correct exports; keep a new hazard's outputs in a separate project folder.
